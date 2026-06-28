@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DeutschSprint</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="header-inner">
+        <div>
+          <p class="eyebrow">DeutschSprint</p>
+          <h1>Grundverben und Wortfamilien</h1>
+        </div>
+        <label class="verb-picker">
+          <span>Grundverb</span>
+          <select id="verbSelect" aria-label="Grundverb auswählen"></select>
+        </label>
+      </div>
+    </header>
+
+    <main>
+      <section class="settings-band" aria-labelledby="settingsTitle">
+        <div class="section-inner settings-grid">
+          <div>
+            <h2 id="settingsTitle">Einstellungen</h2>
+            <p class="muted">Steuere Übersetzungen und aktive Niveaus für das Training.</p>
+          </div>
+          <fieldset class="settings-group">
+            <legend>Übersetzungen</legend>
+            <label class="check-option">
+              <input id="translationEn" type="checkbox" value="en" checked>
+              <span>EN</span>
+            </label>
+            <label class="check-option">
+              <input id="translationRu" type="checkbox" value="ru" checked>
+              <span>RU</span>
+            </label>
+          </fieldset>
+          <fieldset class="settings-group level-settings">
+            <legend>Niveaus</legend>
+            <label class="check-option">
+              <input type="checkbox" name="level" value="A1" checked>
+              <span>A1</span>
+            </label>
+            <label class="check-option">
+              <input type="checkbox" name="level" value="A2" checked>
+              <span>A2</span>
+            </label>
+            <label class="check-option">
+              <input type="checkbox" name="level" value="B1" checked>
+              <span>B1</span>
+            </label>
+            <label class="check-option">
+              <input type="checkbox" name="level" value="B2" checked>
+              <span>B2</span>
+            </label>
+            <label class="check-option">
+              <input type="checkbox" name="level" value="C1" checked>
+              <span>C1</span>
+            </label>
+            <label class="check-option">
+              <input type="checkbox" name="level" value="C2" checked>
+              <span>C2</span>
+            </label>
+          </fieldset>
+        </div>
+      </section>
+
+      <section class="overview-band" aria-labelledby="overviewTitle">
+        <div class="section-inner overview-grid">
+          <div>
+            <h2 id="overviewTitle">Wortfamilie</h2>
+            <p id="overviewText" class="muted">Daten werden geladen ...</p>
+          </div>
+          <div class="stats" aria-label="Übersicht">
+            <div>
+              <strong id="wordCount">0</strong>
+              <span>Wörter</span>
+            </div>
+            <div>
+              <strong id="exerciseCount">0</strong>
+              <span>Übungen</span>
+            </div>
+            <div>
+              <strong id="levelRange">-</strong>
+              <span>Niveaus</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-inner" aria-labelledby="wordsTitle">
+        <div class="section-heading">
+          <div>
+            <h2 id="wordsTitle">Wortschatz</h2>
+            <p class="muted">Übersetzung, Beispiel und ein deutsches Wort mit ähnlicher Bedeutung.</p>
+          </div>
+          <div class="search-wrap">
+            <input id="wordSearch" type="search" placeholder="Wörter und Übersetzungen suchen" aria-label="Wörter und Übersetzungen suchen">
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="word-table">
+            <thead>
+              <tr>
+                <th>Wort</th>
+                <th>Niveau</th>
+                <th class="translation-column">Übersetzung</th>
+                <th>Synonyme</th>
+                <th>Beispiel</th>
+                <th>Satzparaphrase</th>
+              </tr>
+            </thead>
+            <tbody id="wordTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="trainer-band" aria-labelledby="trainerTitle">
+        <div class="section-inner trainer-layout">
+          <aside class="trainer-side">
+            <h2 id="trainerTitle">Training</h2>
+            <label>
+              <span>Übungstyp</span>
+              <select id="typeFilter" aria-label="Übungstyp filtern"></select>
+            </label>
+            <div class="progress-box" aria-live="polite">
+              <span id="progressText">0 / 0</span>
+              <div class="progress-track">
+                <div id="progressBar"></div>
+              </div>
+              <span id="scoreText">Richtig: 0</span>
+            </div>
+          </aside>
+
+          <div class="exercise-panel">
+            <div class="exercise-topline">
+              <span id="exerciseType" class="type-pill">-</span>
+              <span id="exerciseWord" class="word-pill">-</span>
+            </div>
+            <h3 id="questionText">Übungen werden geladen ...</h3>
+            <div id="answerArea" class="answer-area"></div>
+            <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+            <div class="exercise-actions">
+              <button id="checkButton" type="button">Prüfen</button>
+              <button id="nextButton" class="secondary-button" type="button">Weiter</button>
+            </div>
+            <div class="example-box">
+              <p id="exampleDe"></p>
+              <p id="exampleEn"></p>
+              <p id="exampleRu"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

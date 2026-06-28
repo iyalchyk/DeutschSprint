@@ -1,0 +1,8 @@
+[
+  {
+    "base": "weisen",
+    "label": "weisen",
+    "enriched": "assets/weisen_enriched.csv",
+    "exercises": "assets/weisen_exercises_universal.csv"
+  }
+]
