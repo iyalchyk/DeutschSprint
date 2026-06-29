@@ -69,7 +69,7 @@ input {
 
 .header-inner,
 .section-inner {
-  width: min(1180px, calc(100% - 32px));
+  width: min(1520px, calc(100% - 24px));
   margin: 0 auto;
 }
 
@@ -240,15 +240,13 @@ h3 {
 }
 
 .table-wrap {
-  overflow-x: auto;
   padding-bottom: 42px;
 }
 
 .word-table {
   width: 100%;
-  min-width: 1240px;
-  border-collapse: separate;
-  border-spacing: 0;
+  table-layout: fixed;
+  border-collapse: collapse;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: white;
@@ -259,10 +257,50 @@ h3 {
 .word-table th,
 .word-table td {
   border-bottom: 1px solid var(--line);
-  padding: 13px 14px;
+  padding: 11px 12px;
   color: var(--ink);
+  font-size: 0.92rem;
   text-align: left;
   vertical-align: top;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.word-table th:nth-child(1),
+.word-table td:nth-child(1) {
+  width: 11%;
+}
+
+.word-table th:nth-child(2),
+.word-table td:nth-child(2) {
+  width: 7%;
+}
+
+.word-table th:nth-child(3),
+.word-table td:nth-child(3) {
+  width: 13%;
+}
+
+.word-table th:nth-child(4),
+.word-table td:nth-child(4) {
+  width: 11%;
+}
+
+.word-table th:nth-child(5),
+.word-table td:nth-child(5),
+.word-table th:nth-child(6),
+.word-table td:nth-child(6) {
+  width: 16%;
+}
+
+.word-table th:nth-child(7),
+.word-table td:nth-child(7) {
+  width: 12%;
+}
+
+.word-table th:nth-child(8),
+.word-table td:nth-child(8) {
+  width: 14%;
 }
 
 .word-table thead th {
@@ -274,7 +312,7 @@ h3 {
 }
 
 .word-table tbody th {
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   font-weight: 700;
 }
 
@@ -285,7 +323,7 @@ h3 {
 
 .word-table span {
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.86rem;
 }
 
 .word-table.no-translations .translation-column {
@@ -538,7 +576,7 @@ h3 {
 @media (max-width: 560px) {
   .header-inner,
   .section-inner {
-    width: min(100% - 20px, 1180px);
+    width: min(100% - 14px, 1520px);
   }
 
   .header-inner {
@@ -553,7 +591,17 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  .word-table {
-    min-width: 1060px;
+  .word-table th,
+  .word-table td {
+    padding: 9px 8px;
+    font-size: 0.82rem;
+  }
+
+  .word-table tbody th {
+    font-size: 0.88rem;
+  }
+
+  .word-table span {
+    font-size: 0.78rem;
   }
 }
