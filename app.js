@@ -230,6 +230,8 @@ function renderWords() {
       word.word_synonyms,
       word.sentence_example,
       word.sentence_synonym,
+      word.typical_collocations,
+      word.usage_comments_en,
       ...languages.map((language) => language === "en" ? word.word_translation_en : word.word_translation_ru),
       ...languages.map((language) => language === "en" ? word.sentence_example_translation_en : word.sentence_example_translation_ru)
     ].join(" ").toLowerCase();
@@ -237,7 +239,7 @@ function renderWords() {
   });
 
   if (visibleWords.length === 0) {
-    const colspan = languages.length > 0 ? 6 : 5;
+    const colspan = languages.length > 0 ? 8 : 7;
     els.wordTableBody.innerHTML = `<tr><td colspan="${colspan}" class="empty-cell">Keine Treffer.</td></tr>`;
     return;
   }
@@ -250,6 +252,8 @@ function renderWords() {
       <td>${escapeHtml(word.word_synonyms || "-")}</td>
       <td>${renderExampleLines(word)}</td>
       <td>${escapeHtml(word.sentence_synonym || "-")}</td>
+      <td>${renderListLines(word.typical_collocations)}</td>
+      <td>${renderUsageComments(word)}</td>
     </tr>
   `).join("");
 }
@@ -556,6 +560,23 @@ function renderExampleLines(word) {
     return `<span>${escapeHtml(value || "")}</span>`;
   });
   return [escapeHtml(word.sentence_example), ...translations].join("<br>");
+}
+
+function renderListLines(value) {
+  const items = String(value || "")
+    .split(";")
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+  if (items.length === 0) {
+    return "-";
+  }
+
+  return items.map((item) => escapeHtml(item)).join("<br>");
+}
+
+function renderUsageComments(word) {
+  return escapeHtml(word.usage_comments_en || "-");
 }
 
 function renderExerciseTranslations(exercise) {

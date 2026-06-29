@@ -246,7 +246,7 @@ h3 {
 
 .word-table {
   width: 100%;
-  min-width: 940px;
+  min-width: 1240px;
   border-collapse: separate;
   border-spacing: 0;
   border: 1px solid var(--line);
@@ -554,6 +554,6 @@ h3 {
   }
 
   .word-table {
-    min-width: 860px;
+    min-width: 1060px;
   }
 }
