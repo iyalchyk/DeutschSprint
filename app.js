@@ -247,13 +247,13 @@ function renderWords() {
   els.wordTableBody.innerHTML = visibleWords.map((word) => `
     <tr class="${isLevelActive(word.word_level) ? "" : "inactive-row"}">
       <th scope="row">${escapeHtml(word.word)}</th>
-      <td><span class="level">${escapeHtml(word.word_level || "-")}</span></td>
-      ${languages.length > 0 ? `<td class="translation-column">${renderTranslationLines(word, "word")}</td>` : ""}
-      <td>${escapeHtml(word.word_synonyms || "-")}</td>
-      <td>${renderExampleLines(word)}</td>
-      <td>${escapeHtml(word.sentence_synonym || "-")}</td>
-      <td>${renderListLines(word.typical_collocations)}</td>
-      <td>${renderUsageComments(word)}</td>
+      <td data-label="Niveau"><span class="level">${escapeHtml(word.word_level || "-")}</span></td>
+      ${languages.length > 0 ? `<td class="translation-column" data-label="Übersetzung">${renderTranslationLines(word, "word")}</td>` : ""}
+      <td data-label="Synonyme">${escapeHtml(word.word_synonyms || "-")}</td>
+      <td data-label="Beispiel">${renderExampleLines(word)}</td>
+      <td data-label="Satzparaphrase">${escapeHtml(word.sentence_synonym || "-")}</td>
+      <td data-label="Kollokationen">${renderListLines(word.typical_collocations)}</td>
+      <td data-label="Verwendung">${renderUsageComments(word)}</td>
     </tr>
   `).join("");
 }
