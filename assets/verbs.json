@@ -1,8 +1,1266 @@
-[
-  {
-    "base": "weisen",
-    "label": "weisen",
-    "enriched": "assets/weisen_enriched.csv",
-    "exercises": "assets/weisen_exercises_universal.csv"
+{
+  "communication": {
+    "category_name_de": "Kommunikation",
+    "category_name_en": "Communication",
+    "category_name_ru": "Коммуникация",
+    "words": [
+      {
+        "base": "antworten",
+        "label": "antworten",
+        "enriched": "assets/antworten_enriched.csv"
+      },
+      {
+        "base": "bitten",
+        "label": "bitten",
+        "enriched": "assets/bitten_enriched.csv"
+      },
+      {
+        "base": "erzählen",
+        "label": "erzählen",
+        "enriched": "assets/erzählen_enriched.csv"
+      },
+      {
+        "base": "fragen",
+        "label": "fragen",
+        "enriched": "assets/fragen_enriched.csv"
+      },
+      {
+        "base": "klingeln",
+        "label": "klingeln",
+        "enriched": "assets/klingeln_enriched.csv"
+      },
+      {
+        "base": "melden",
+        "label": "melden",
+        "enriched": "assets/melden_enriched.csv"
+      },
+      {
+        "base": "nennen",
+        "label": "nennen",
+        "enriched": "assets/nennen_enriched.csv"
+      },
+      {
+        "base": "reden",
+        "label": "reden",
+        "enriched": "assets/reden_enriched.csv"
+      },
+      {
+        "base": "rufen",
+        "label": "rufen",
+        "enriched": "assets/rufen_enriched.csv"
+      },
+      {
+        "base": "sagen",
+        "label": "sagen",
+        "enriched": "assets/sagen_enriched.csv"
+      },
+      {
+        "base": "schreiben",
+        "label": "schreiben",
+        "enriched": "assets/schreiben_enriched.csv"
+      },
+      {
+        "base": "schreien",
+        "label": "schreien",
+        "enriched": "assets/schreien_enriched.csv"
+      },
+      {
+        "base": "senden",
+        "label": "senden",
+        "enriched": "assets/senden_enriched.csv"
+      },
+      {
+        "base": "sprechen",
+        "label": "sprechen",
+        "enriched": "assets/sprechen_enriched.csv"
+      },
+      {
+        "base": "tönen",
+        "label": "tönen",
+        "enriched": "assets/tönen_enriched.csv"
+      },
+      {
+        "base": "vermitteln",
+        "label": "vermitteln",
+        "enriched": "assets/vermitteln_enriched.csv"
+      },
+      {
+        "base": "zeigen",
+        "label": "zeigen",
+        "enriched": "assets/zeigen_enriched.csv"
+      }
+    ]
+  },
+  "work": {
+    "category_name_de": "Arbeit und Produktion",
+    "category_name_en": "Work & Production",
+    "category_name_ru": "Работа и производство",
+    "words": [
+      {
+        "base": "arbeiten",
+        "label": "arbeiten",
+        "enriched": "assets/arbeiten_enriched.csv"
+      },
+      {
+        "base": "backen",
+        "label": "backen",
+        "enriched": "assets/backen_enriched.csv"
+      },
+      {
+        "base": "bauen",
+        "label": "bauen",
+        "enriched": "assets/bauen_enriched.csv"
+      },
+      {
+        "base": "bohren",
+        "label": "bohren",
+        "enriched": "assets/bohren_enriched.csv"
+      },
+      {
+        "base": "feilen",
+        "label": "feilen",
+        "enriched": "assets/feilen_enriched.csv"
+      },
+      {
+        "base": "filtern",
+        "label": "filtern",
+        "enriched": "assets/filtern_enriched.csv"
+      },
+      {
+        "base": "formen",
+        "label": "formen",
+        "enriched": "assets/formen_enriched.csv"
+      },
+      {
+        "base": "gießen",
+        "label": "gießen",
+        "enriched": "assets/gießen_enriched.csv"
+      },
+      {
+        "base": "graben",
+        "label": "graben",
+        "enriched": "assets/graben_enriched.csv"
+      },
+      {
+        "base": "gründen",
+        "label": "gründen",
+        "enriched": "assets/gründen_enriched.csv"
+      },
+      {
+        "base": "heizen",
+        "label": "heizen",
+        "enriched": "assets/heizen_enriched.csv"
+      },
+      {
+        "base": "kochen",
+        "label": "kochen",
+        "enriched": "assets/kochen_enriched.csv"
+      },
+      {
+        "base": "malen",
+        "label": "malen",
+        "enriched": "assets/malen_enriched.csv"
+      },
+      {
+        "base": "pflanzen",
+        "label": "pflanzen",
+        "enriched": "assets/pflanzen_enriched.csv"
+      },
+      {
+        "base": "putzen",
+        "label": "putzen",
+        "enriched": "assets/putzen_enriched.csv"
+      },
+      {
+        "base": "reinigen",
+        "label": "reinigen",
+        "enriched": "assets/reinigen_enriched.csv"
+      },
+      {
+        "base": "schaffen",
+        "label": "schaffen",
+        "enriched": "assets/schaffen_enriched.csv"
+      },
+      {
+        "base": "schneiden",
+        "label": "schneiden",
+        "enriched": "assets/schneiden_enriched.csv"
+      },
+      {
+        "base": "spülen",
+        "label": "spülen",
+        "enriched": "assets/spülen_enriched.csv"
+      },
+      {
+        "base": "würzen",
+        "label": "würzen",
+        "enriched": "assets/würzen_enriched.csv"
+      },
+      {
+        "base": "zeichnen",
+        "label": "zeichnen",
+        "enriched": "assets/zeichnen_enriched.csv"
+      }
+    ]
+  },
+  "time": {
+    "category_name_de": "Zeit",
+    "category_name_en": "Time",
+    "category_name_ru": "Время и протекание",
+    "words": [
+      {
+        "base": "beginnen",
+        "label": "beginnen",
+        "enriched": "assets/beginnen_enriched.csv"
+      },
+      {
+        "base": "dauern",
+        "label": "dauern",
+        "enriched": "assets/dauern_enriched.csv"
+      },
+      {
+        "base": "enden",
+        "label": "enden",
+        "enriched": "assets/enden_enriched.csv"
+      },
+      {
+        "base": "starten",
+        "label": "starten",
+        "enriched": "assets/starten_enriched.csv"
+      },
+      {
+        "base": "warten",
+        "label": "warten",
+        "enriched": "assets/warten_enriched.csv"
+      }
+    ]
+  },
+  "manipulation": {
+    "category_name_de": "Handlung",
+    "category_name_en": "Manipulation",
+    "category_name_ru": "Манипуляции и действие",
+    "words": [
+      {
+        "base": "bergen",
+        "label": "bergen",
+        "enriched": "assets/bergen_enriched.csv"
+      },
+      {
+        "base": "bilden",
+        "label": "bilden",
+        "enriched": "assets/bilden_enriched.csv"
+      },
+      {
+        "base": "binden",
+        "label": "binden",
+        "enriched": "assets/binden_enriched.csv"
+      },
+      {
+        "base": "blasen",
+        "label": "blasen",
+        "enriched": "assets/blasen_enriched.csv"
+      },
+      {
+        "base": "blinken",
+        "label": "blinken",
+        "enriched": "assets/blinken_enriched.csv"
+      },
+      {
+        "base": "brechen",
+        "label": "brechen",
+        "enriched": "assets/brechen_enriched.csv"
+      },
+      {
+        "base": "bringen",
+        "label": "bringen",
+        "enriched": "assets/bringen_enriched.csv"
+      },
+      {
+        "base": "decken",
+        "label": "decken",
+        "enriched": "assets/decken_enriched.csv"
+      },
+      {
+        "base": "drehen",
+        "label": "drehen",
+        "enriched": "assets/drehen_enriched.csv"
+      },
+      {
+        "base": "drohen",
+        "label": "drohen",
+        "enriched": "assets/drohen_enriched.csv"
+      },
+      {
+        "base": "drücken",
+        "label": "drücken",
+        "enriched": "assets/drücken_enriched.csv"
+      },
+      {
+        "base": "fallen",
+        "label": "fallen",
+        "enriched": "assets/fallen_enriched.csv"
+      },
+      {
+        "base": "fangen",
+        "label": "fangen",
+        "enriched": "assets/fangen_enriched.csv"
+      },
+      {
+        "base": "fassen",
+        "label": "fassen",
+        "enriched": "assets/fassen_enriched.csv"
+      },
+      {
+        "base": "fechten",
+        "label": "fechten",
+        "enriched": "assets/fechten_enriched.csv"
+      },
+      {
+        "base": "fegen",
+        "label": "fegen",
+        "enriched": "assets/fegen_enriched.csv"
+      },
+      {
+        "base": "feuchten",
+        "label": "feuchten",
+        "enriched": "assets/feuchten_enriched.csv"
+      },
+      {
+        "base": "feuern",
+        "label": "feuern",
+        "enriched": "assets/feuern_enriched.csv"
+      },
+      {
+        "base": "füllen",
+        "label": "füllen",
+        "enriched": "assets/füllen_enriched.csv"
+      },
+      {
+        "base": "geben",
+        "label": "geben",
+        "enriched": "assets/geben_enriched.csv"
+      },
+      {
+        "base": "gleichen",
+        "label": "gleichen",
+        "enriched": "assets/gleichen_enriched.csv"
+      },
+      {
+        "base": "greifen",
+        "label": "greifen",
+        "enriched": "assets/greifen_enriched.csv"
+      },
+      {
+        "base": "heben",
+        "label": "heben",
+        "enriched": "assets/heben_enriched.csv"
+      },
+      {
+        "base": "hocken",
+        "label": "hocken",
+        "enriched": "assets/hocken_enriched.csv"
+      },
+      {
+        "base": "holen",
+        "label": "holen",
+        "enriched": "assets/holen_enriched.csv"
+      },
+      {
+        "base": "hüten",
+        "label": "hüten",
+        "enriched": "assets/hüten_enriched.csv"
+      },
+      {
+        "base": "irren",
+        "label": "irren",
+        "enriched": "assets/irren_enriched.csv"
+      },
+      {
+        "base": "kaufen",
+        "label": "kaufen",
+        "enriched": "assets/kaufen_enriched.csv"
+      },
+      {
+        "base": "kehren",
+        "label": "kehren",
+        "enriched": "assets/kehren_enriched.csv"
+      },
+      {
+        "base": "kleben",
+        "label": "kleben",
+        "enriched": "assets/kleben_enriched.csv"
+      },
+      {
+        "base": "klopfen",
+        "label": "klopfen",
+        "enriched": "assets/klopfen_enriched.csv"
+      },
+      {
+        "base": "knüpfen",
+        "label": "knüpfen",
+        "enriched": "assets/knüpfen_enriched.csv"
+      },
+      {
+        "base": "koppeln",
+        "label": "koppeln",
+        "enriched": "assets/koppeln_enriched.csv"
+      },
+      {
+        "base": "kratzen",
+        "label": "kratzen",
+        "enriched": "assets/kratzen_enriched.csv"
+      },
+      {
+        "base": "kreuzen",
+        "label": "kreuzen",
+        "enriched": "assets/kreuzen_enriched.csv"
+      },
+      {
+        "base": "lachen",
+        "label": "lachen",
+        "enriched": "assets/lachen_enriched.csv"
+      },
+      {
+        "base": "lassen",
+        "label": "lassen",
+        "enriched": "assets/lassen_enriched.csv"
+      },
+      {
+        "base": "leben",
+        "label": "leben",
+        "enriched": "assets/leben_enriched.csv"
+      },
+      {
+        "base": "liefern",
+        "label": "liefern",
+        "enriched": "assets/liefern_enriched.csv"
+      },
+      {
+        "base": "löschen",
+        "label": "löschen",
+        "enriched": "assets/löschen_enriched.csv"
+      },
+      {
+        "base": "machen",
+        "label": "machen",
+        "enriched": "assets/machen_enriched.csv"
+      },
+      {
+        "base": "messen",
+        "label": "messen",
+        "enriched": "assets/messen_enriched.csv"
+      },
+      {
+        "base": "mischen",
+        "label": "mischen",
+        "enriched": "assets/mischen_enriched.csv"
+      },
+      {
+        "base": "nehmen",
+        "label": "nehmen",
+        "enriched": "assets/nehmen_enriched.csv"
+      },
+      {
+        "base": "nutzen",
+        "label": "nutzen",
+        "enriched": "assets/nutzen_enriched.csv"
+      },
+      {
+        "base": "prägen",
+        "label": "prägen",
+        "enriched": "assets/prägen_enriched.csv"
+      },
+      {
+        "base": "reißen",
+        "label": "reißen",
+        "enriched": "assets/reißen_enriched.csv"
+      },
+      {
+        "base": "riegeln",
+        "label": "riegeln",
+        "enriched": "assets/riegeln_enriched.csv"
+      },
+      {
+        "base": "ringen",
+        "label": "ringen",
+        "enriched": "assets/ringen_enriched.csv"
+      },
+      {
+        "base": "rühren",
+        "label": "rühren",
+        "enriched": "assets/rühren_enriched.csv"
+      },
+      {
+        "base": "sammeln",
+        "label": "sammeln",
+        "enriched": "assets/sammeln_enriched.csv"
+      },
+      {
+        "base": "scheiden",
+        "label": "scheiden",
+        "enriched": "assets/scheiden_enriched.csv"
+      },
+      {
+        "base": "schicken",
+        "label": "schicken",
+        "enriched": "assets/schicken_enriched.csv"
+      },
+      {
+        "base": "schieben",
+        "label": "schieben",
+        "enriched": "assets/schieben_enriched.csv"
+      },
+      {
+        "base": "schießen",
+        "label": "schießen",
+        "enriched": "assets/schießen_enriched.csv"
+      },
+      {
+        "base": "schirmen",
+        "label": "schirmen",
+        "enriched": "assets/schirmen_enriched.csv"
+      },
+      {
+        "base": "schlagen",
+        "label": "schlagen",
+        "enriched": "assets/schlagen_enriched.csv"
+      },
+      {
+        "base": "schöpfen",
+        "label": "schöpfen",
+        "enriched": "assets/schöpfen_enriched.csv"
+      },
+      {
+        "base": "senken",
+        "label": "senken",
+        "enriched": "assets/senken_enriched.csv"
+      },
+      {
+        "base": "singen",
+        "label": "singen",
+        "enriched": "assets/singen_enriched.csv"
+      },
+      {
+        "base": "sinken",
+        "label": "sinken",
+        "enriched": "assets/sinken_enriched.csv"
+      },
+      {
+        "base": "sorgen",
+        "label": "sorgen",
+        "enriched": "assets/sorgen_enriched.csv"
+      },
+      {
+        "base": "spannen",
+        "label": "spannen",
+        "enriched": "assets/spannen_enriched.csv"
+      },
+      {
+        "base": "sparen",
+        "label": "sparen",
+        "enriched": "assets/sparen_enriched.csv"
+      },
+      {
+        "base": "spielen",
+        "label": "spielen",
+        "enriched": "assets/spielen_enriched.csv"
+      },
+      {
+        "base": "stoßen",
+        "label": "stoßen",
+        "enriched": "assets/stoßen_enriched.csv"
+      },
+      {
+        "base": "streben",
+        "label": "streben",
+        "enriched": "assets/streben_enriched.csv"
+      },
+      {
+        "base": "streichen",
+        "label": "streichen",
+        "enriched": "assets/streichen_enriched.csv"
+      },
+      {
+        "base": "säen",
+        "label": "säen",
+        "enriched": "assets/säen_enriched.csv"
+      },
+      {
+        "base": "teilen",
+        "label": "teilen",
+        "enriched": "assets/teilen_enriched.csv"
+      },
+      {
+        "base": "tragen",
+        "label": "tragen",
+        "enriched": "assets/tragen_enriched.csv"
+      },
+      {
+        "base": "trennen",
+        "label": "trennen",
+        "enriched": "assets/trennen_enriched.csv"
+      },
+      {
+        "base": "treten",
+        "label": "treten",
+        "enriched": "assets/treten_enriched.csv"
+      },
+      {
+        "base": "trinken",
+        "label": "trinken",
+        "enriched": "assets/trinken_enriched.csv"
+      },
+      {
+        "base": "trocknen",
+        "label": "trocknen",
+        "enriched": "assets/trocknen_enriched.csv"
+      },
+      {
+        "base": "tun",
+        "label": "tun",
+        "enriched": "assets/tun_enriched.csv"
+      },
+      {
+        "base": "wagen",
+        "label": "wagen",
+        "enriched": "assets/wagen_enriched.csv"
+      },
+      {
+        "base": "wandeln",
+        "label": "wandeln",
+        "enriched": "assets/wandeln_enriched.csv"
+      },
+      {
+        "base": "weichen",
+        "label": "weichen",
+        "enriched": "assets/weichen_enriched.csv"
+      },
+      {
+        "base": "wenden",
+        "label": "wenden",
+        "enriched": "assets/wenden_enriched.csv"
+      },
+      {
+        "base": "werfen",
+        "label": "werfen",
+        "enriched": "assets/werfen_enriched.csv"
+      },
+      {
+        "base": "wischen",
+        "label": "wischen",
+        "enriched": "assets/wischen_enriched.csv"
+      },
+      {
+        "base": "zwingen",
+        "label": "zwingen",
+        "enriched": "assets/zwingen_enriched.csv"
+      },
+      {
+        "base": "üben",
+        "label": "üben",
+        "enriched": "assets/üben_enriched.csv"
+      }
+    ]
+  },
+  "placement": {
+    "category_name_de": "Positionierung",
+    "category_name_en": "Placement",
+    "category_name_ru": "Положение и размещение",
+    "words": [
+      {
+        "base": "bleiben",
+        "label": "bleiben",
+        "enriched": "assets/bleiben_enriched.csv"
+      },
+      {
+        "base": "hängen",
+        "label": "hängen",
+        "enriched": "assets/hängen_enriched.csv"
+      },
+      {
+        "base": "legen",
+        "label": "legen",
+        "enriched": "assets/legen_enriched.csv"
+      },
+      {
+        "base": "lehnen",
+        "label": "lehnen",
+        "enriched": "assets/lehnen_enriched.csv"
+      },
+      {
+        "base": "liegen",
+        "label": "liegen",
+        "enriched": "assets/liegen_enriched.csv"
+      },
+      {
+        "base": "setzen",
+        "label": "setzen",
+        "enriched": "assets/setzen_enriched.csv"
+      },
+      {
+        "base": "sitzen",
+        "label": "sitzen",
+        "enriched": "assets/sitzen_enriched.csv"
+      },
+      {
+        "base": "stecken",
+        "label": "stecken",
+        "enriched": "assets/stecken_enriched.csv"
+      },
+      {
+        "base": "stehen",
+        "label": "stehen",
+        "enriched": "assets/stehen_enriched.csv"
+      },
+      {
+        "base": "stellen",
+        "label": "stellen",
+        "enriched": "assets/stellen_enriched.csv"
+      },
+      {
+        "base": "verweilen",
+        "label": "verweilen",
+        "enriched": "assets/verweilen_enriched.csv"
+      },
+      {
+        "base": "wohnen",
+        "label": "wohnen",
+        "enriched": "assets/wohnen_enriched.csv"
+      }
+    ]
+  },
+  "nature": {
+    "category_name_de": "Natur",
+    "category_name_en": "Nature",
+    "category_name_ru": "Природа и явления",
+    "words": [
+      {
+        "base": "blühen",
+        "label": "blühen",
+        "enriched": "assets/blühen_enriched.csv"
+      },
+      {
+        "base": "heulen",
+        "label": "heulen",
+        "enriched": "assets/heulen_enriched.csv"
+      },
+      {
+        "base": "regen",
+        "label": "regen",
+        "enriched": "assets/regen_enriched.csv"
+      },
+      {
+        "base": "strömen",
+        "label": "strömen",
+        "enriched": "assets/strömen_enriched.csv"
+      },
+      {
+        "base": "wachsen",
+        "label": "wachsen",
+        "enriched": "assets/wachsen_enriched.csv"
+      }
+    ]
+  },
+  "cognition": {
+    "category_name_de": "Denken",
+    "category_name_en": "Cognition",
+    "category_name_ru": "Когниция и мышление",
+    "words": [
+      {
+        "base": "denken",
+        "label": "denken",
+        "enriched": "assets/denken_enriched.csv"
+      },
+      {
+        "base": "finden",
+        "label": "finden",
+        "enriched": "assets/finden_enriched.csv"
+      },
+      {
+        "base": "kennen",
+        "label": "kennen",
+        "enriched": "assets/kennen_enriched.csv"
+      },
+      {
+        "base": "klären",
+        "label": "klären",
+        "enriched": "assets/klären_enriched.csv"
+      },
+      {
+        "base": "lernen",
+        "label": "lernen",
+        "enriched": "assets/lernen_enriched.csv"
+      },
+      {
+        "base": "lesen",
+        "label": "lesen",
+        "enriched": "assets/lesen_enriched.csv"
+      },
+      {
+        "base": "merken",
+        "label": "merken",
+        "enriched": "assets/merken_enriched.csv"
+      },
+      {
+        "base": "planen",
+        "label": "planen",
+        "enriched": "assets/planen_enriched.csv"
+      },
+      {
+        "base": "prüfen",
+        "label": "prüfen",
+        "enriched": "assets/prüfen_enriched.csv"
+      },
+      {
+        "base": "raten",
+        "label": "raten",
+        "enriched": "assets/raten_enriched.csv"
+      },
+      {
+        "base": "rechnen",
+        "label": "rechnen",
+        "enriched": "assets/rechnen_enriched.csv"
+      },
+      {
+        "base": "suchen",
+        "label": "suchen",
+        "enriched": "assets/suchen_enriched.csv"
+      },
+      {
+        "base": "werten",
+        "label": "werten",
+        "enriched": "assets/werten_enriched.csv"
+      },
+      {
+        "base": "wissen",
+        "label": "wissen",
+        "enriched": "assets/wissen_enriched.csv"
+      }
+    ]
+  },
+  "social": {
+    "category_name_de": "Soziale Interaktion",
+    "category_name_en": "Social Interaction",
+    "category_name_ru": "Социальное взаимодействие",
+    "words": [
+      {
+        "base": "dienen",
+        "label": "dienen",
+        "enriched": "assets/dienen_enriched.csv"
+      },
+      {
+        "base": "handeln",
+        "label": "handeln",
+        "enriched": "assets/handeln_enriched.csv"
+      },
+      {
+        "base": "helfen",
+        "label": "helfen",
+        "enriched": "assets/helfen_enriched.csv"
+      },
+      {
+        "base": "kümmern",
+        "label": "kümmern",
+        "enriched": "assets/kümmern_enriched.csv"
+      },
+      {
+        "base": "küssen",
+        "label": "küssen",
+        "enriched": "assets/küssen_enriched.csv"
+      },
+      {
+        "base": "pflegen",
+        "label": "pflegen",
+        "enriched": "assets/pflegen_enriched.csv"
+      },
+      {
+        "base": "retten",
+        "label": "retten",
+        "enriched": "assets/retten_enriched.csv"
+      },
+      {
+        "base": "schützen",
+        "label": "schützen",
+        "enriched": "assets/schützen_enriched.csv"
+      },
+      {
+        "base": "streiten",
+        "label": "streiten",
+        "enriched": "assets/streiten_enriched.csv"
+      },
+      {
+        "base": "treffen",
+        "label": "treffen",
+        "enriched": "assets/treffen_enriched.csv"
+      },
+      {
+        "base": "wehren",
+        "label": "wehren",
+        "enriched": "assets/wehren_enriched.csv"
+      },
+      {
+        "base": "wünschen",
+        "label": "wünschen",
+        "enriched": "assets/wünschen_enriched.csv"
+      }
+    ]
+  },
+  "movement": {
+    "category_name_de": "Bewegung",
+    "category_name_en": "Movement",
+    "category_name_ru": "Движение и перемещение",
+    "words": [
+      {
+        "base": "dringen",
+        "label": "dringen",
+        "enriched": "assets/dringen_enriched.csv"
+      },
+      {
+        "base": "fahren",
+        "label": "fahren",
+        "enriched": "assets/fahren_enriched.csv"
+      },
+      {
+        "base": "fliegen",
+        "label": "fliegen",
+        "enriched": "assets/fliegen_enriched.csv"
+      },
+      {
+        "base": "fliehen",
+        "label": "fliehen",
+        "enriched": "assets/fliehen_enriched.csv"
+      },
+      {
+        "base": "fließen",
+        "label": "fließen",
+        "enriched": "assets/fließen_enriched.csv"
+      },
+      {
+        "base": "gehen",
+        "label": "gehen",
+        "enriched": "assets/gehen_enriched.csv"
+      },
+      {
+        "base": "gleiten",
+        "label": "gleiten",
+        "enriched": "assets/gleiten_enriched.csv"
+      },
+      {
+        "base": "klettern",
+        "label": "klettern",
+        "enriched": "assets/klettern_enriched.csv"
+      },
+      {
+        "base": "kommen",
+        "label": "kommen",
+        "enriched": "assets/kommen_enriched.csv"
+      },
+      {
+        "base": "kreisen",
+        "label": "kreisen",
+        "enriched": "assets/kreisen_enriched.csv"
+      },
+      {
+        "base": "landen",
+        "label": "landen",
+        "enriched": "assets/landen_enriched.csv"
+      },
+      {
+        "base": "laufen",
+        "label": "laufen",
+        "enriched": "assets/laufen_enriched.csv"
+      },
+      {
+        "base": "münden",
+        "label": "münden",
+        "enriched": "assets/münden_enriched.csv"
+      },
+      {
+        "base": "reisen",
+        "label": "reisen",
+        "enriched": "assets/reisen_enriched.csv"
+      },
+      {
+        "base": "reiten",
+        "label": "reiten",
+        "enriched": "assets/reiten_enriched.csv"
+      },
+      {
+        "base": "rennen",
+        "label": "rennen",
+        "enriched": "assets/rennen_enriched.csv"
+      },
+      {
+        "base": "rollen",
+        "label": "rollen",
+        "enriched": "assets/rollen_enriched.csv"
+      },
+      {
+        "base": "schleichen",
+        "label": "schleichen",
+        "enriched": "assets/schleichen_enriched.csv"
+      },
+      {
+        "base": "schwimmen",
+        "label": "schwimmen",
+        "enriched": "assets/schwimmen_enriched.csv"
+      },
+      {
+        "base": "segeln",
+        "label": "segeln",
+        "enriched": "assets/segeln_enriched.csv"
+      },
+      {
+        "base": "springen",
+        "label": "springen",
+        "enriched": "assets/springen_enriched.csv"
+      },
+      {
+        "base": "steigen",
+        "label": "steigen",
+        "enriched": "assets/steigen_enriched.csv"
+      },
+      {
+        "base": "stürzen",
+        "label": "stürzen",
+        "enriched": "assets/stürzen_enriched.csv"
+      },
+      {
+        "base": "tauchen",
+        "label": "tauchen",
+        "enriched": "assets/tauchen_enriched.csv"
+      },
+      {
+        "base": "treiben",
+        "label": "treiben",
+        "enriched": "assets/treiben_enriched.csv"
+      },
+      {
+        "base": "wandern",
+        "label": "wandern",
+        "enriched": "assets/wandern_enriched.csv"
+      },
+      {
+        "base": "ziehen",
+        "label": "ziehen",
+        "enriched": "assets/ziehen_enriched.csv"
+      }
+    ]
+  },
+  "perception": {
+    "category_name_de": "Wahrnehmung",
+    "category_name_en": "Perception",
+    "category_name_ru": "Восприятие и ощущения",
+    "words": [
+      {
+        "base": "fehlen",
+        "label": "fehlen",
+        "enriched": "assets/fehlen_enriched.csv"
+      },
+      {
+        "base": "frieren",
+        "label": "frieren",
+        "enriched": "assets/frieren_enriched.csv"
+      },
+      {
+        "base": "fühlen",
+        "label": "fühlen",
+        "enriched": "assets/fühlen_enriched.csv"
+      },
+      {
+        "base": "hören",
+        "label": "hören",
+        "enriched": "assets/hören_enriched.csv"
+      },
+      {
+        "base": "leuchten",
+        "label": "leuchten",
+        "enriched": "assets/leuchten_enriched.csv"
+      },
+      {
+        "base": "riechen",
+        "label": "riechen",
+        "enriched": "assets/riechen_enriched.csv"
+      },
+      {
+        "base": "scheinen",
+        "label": "scheinen",
+        "enriched": "assets/scheinen_enriched.csv"
+      },
+      {
+        "base": "sehen",
+        "label": "sehen",
+        "enriched": "assets/sehen_enriched.csv"
+      }
+    ]
+  },
+  "control": {
+    "category_name_de": "Steuerung",
+    "category_name_en": "Control",
+    "category_name_ru": "Управление и организация",
+    "words": [
+      {
+        "base": "führen",
+        "label": "führen",
+        "enriched": "assets/führen_enriched.csv"
+      },
+      {
+        "base": "halten",
+        "label": "halten",
+        "enriched": "assets/halten_enriched.csv"
+      },
+      {
+        "base": "laden",
+        "label": "laden",
+        "enriched": "assets/laden_enriched.csv"
+      },
+      {
+        "base": "leiten",
+        "label": "leiten",
+        "enriched": "assets/leiten_enriched.csv"
+      },
+      {
+        "base": "lenken",
+        "label": "lenken",
+        "enriched": "assets/lenken_enriched.csv"
+      },
+      {
+        "base": "ordnen",
+        "label": "ordnen",
+        "enriched": "assets/ordnen_enriched.csv"
+      },
+      {
+        "base": "regeln",
+        "label": "regeln",
+        "enriched": "assets/regeln_enriched.csv"
+      },
+      {
+        "base": "reichen",
+        "label": "reichen",
+        "enriched": "assets/reichen_enriched.csv"
+      },
+      {
+        "base": "richten",
+        "label": "richten",
+        "enriched": "assets/richten_enriched.csv"
+      },
+      {
+        "base": "schalten",
+        "label": "schalten",
+        "enriched": "assets/schalten_enriched.csv"
+      },
+      {
+        "base": "schließen",
+        "label": "schließen",
+        "enriched": "assets/schließen_enriched.csv"
+      },
+      {
+        "base": "sichern",
+        "label": "sichern",
+        "enriched": "assets/sichern_enriched.csv"
+      },
+      {
+        "base": "speichern",
+        "label": "speichern",
+        "enriched": "assets/speichern_enriched.csv"
+      },
+      {
+        "base": "steuern",
+        "label": "steuern",
+        "enriched": "assets/steuern_enriched.csv"
+      },
+      {
+        "base": "stimmen",
+        "label": "stimmen",
+        "enriched": "assets/stimmen_enriched.csv"
+      },
+      {
+        "base": "wecken",
+        "label": "wecken",
+        "enriched": "assets/wecken_enriched.csv"
+      },
+      {
+        "base": "weisen",
+        "label": "weisen",
+        "enriched": "assets/weisen_enriched.csv"
+      },
+      {
+        "base": "zahlen",
+        "label": "zahlen",
+        "enriched": "assets/zahlen_enriched.csv"
+      },
+      {
+        "base": "öffnen",
+        "label": "öffnen",
+        "enriched": "assets/öffnen_enriched.csv"
+      }
+    ]
+  },
+  "state": {
+    "category_name_de": "Zustand und Veränderung",
+    "category_name_en": "State & Change",
+    "category_name_ru": "Состояние и изменение",
+    "words": [
+      {
+        "base": "gelingen",
+        "label": "gelingen",
+        "enriched": "assets/gelingen_enriched.csv"
+      },
+      {
+        "base": "gelten",
+        "label": "gelten",
+        "enriched": "assets/gelten_enriched.csv"
+      },
+      {
+        "base": "gewinnen",
+        "label": "gewinnen",
+        "enriched": "assets/gewinnen_enriched.csv"
+      },
+      {
+        "base": "heilen",
+        "label": "heilen",
+        "enriched": "assets/heilen_enriched.csv"
+      },
+      {
+        "base": "kosten",
+        "label": "kosten",
+        "enriched": "assets/kosten_enriched.csv"
+      },
+      {
+        "base": "lösen",
+        "label": "lösen",
+        "enriched": "assets/lösen_enriched.csv"
+      },
+      {
+        "base": "passen",
+        "label": "passen",
+        "enriched": "assets/passen_enriched.csv"
+      },
+      {
+        "base": "stärken",
+        "label": "stärken",
+        "enriched": "assets/stärken_enriched.csv"
+      },
+      {
+        "base": "verlieren",
+        "label": "verlieren",
+        "enriched": "assets/verlieren_enriched.csv"
+      },
+      {
+        "base": "wechseln",
+        "label": "wechseln",
+        "enriched": "assets/wechseln_enriched.csv"
+      },
+      {
+        "base": "wirken",
+        "label": "wirken",
+        "enriched": "assets/wirken_enriched.csv"
+      },
+      {
+        "base": "ändern",
+        "label": "ändern",
+        "enriched": "assets/ändern_enriched.csv"
+      }
+    ]
   }
-]
+}

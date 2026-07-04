@@ -141,7 +141,7 @@ while IFS= read -r word; do
       ;;
   esac
   python3 scripts/wiktionary_unterbegriffe.py "$word"
-done < data/1_input/word_bases_list.txt
+done < data/1_input/word_bases_list_01.txt
 ```
 
 That skips empty lines and category headings such as `Движение и перемещение:`.

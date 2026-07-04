@@ -25,7 +25,7 @@
         <div class="section-inner settings-grid">
           <div>
             <h2 id="settingsTitle">Einstellungen</h2>
-            <p class="muted">Steuere Übersetzungen und aktive Niveaus für das Training.</p>
+            <p class="muted">Steuere Übersetzungen und aktive Niveaus für die Wortschatzliste.</p>
           </div>
           <fieldset class="settings-group">
             <legend>Übersetzungen</legend>
@@ -80,10 +80,6 @@
               <span>Wörter</span>
             </div>
             <div>
-              <strong id="exerciseCount">0</strong>
-              <span>Übungen</span>
-            </div>
-            <div>
               <strong id="levelRange">-</strong>
               <span>Niveaus</span>
             </div>
@@ -117,44 +113,6 @@
             </thead>
             <tbody id="wordTableBody"></tbody>
           </table>
-        </div>
-      </section>
-
-      <section class="trainer-band" aria-labelledby="trainerTitle">
-        <div class="section-inner trainer-layout">
-          <aside class="trainer-side">
-            <h2 id="trainerTitle">Training</h2>
-            <label>
-              <span>Übungstyp</span>
-              <select id="typeFilter" aria-label="Übungstyp filtern"></select>
-            </label>
-            <div class="progress-box" aria-live="polite">
-              <span id="progressText">0 / 0</span>
-              <div class="progress-track">
-                <div id="progressBar"></div>
-              </div>
-              <span id="scoreText">Richtig: 0</span>
-            </div>
-          </aside>
-
-          <div class="exercise-panel">
-            <div class="exercise-topline">
-              <span id="exerciseType" class="type-pill">-</span>
-              <span id="exerciseWord" class="word-pill">-</span>
-            </div>
-            <h3 id="questionText">Übungen werden geladen ...</h3>
-            <div id="answerArea" class="answer-area"></div>
-            <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
-            <div class="exercise-actions">
-              <button id="checkButton" type="button">Prüfen</button>
-              <button id="nextButton" class="secondary-button" type="button">Weiter</button>
-            </div>
-            <div class="example-box">
-              <p id="exampleDe"></p>
-              <p id="exampleEn"></p>
-              <p id="exampleRu"></p>
-            </div>
-          </div>
         </div>
       </section>
     </main>

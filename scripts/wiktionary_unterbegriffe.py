@@ -9,6 +9,7 @@ import itertools
 import json
 import re
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -21,23 +22,65 @@ DEFAULT_WORD_METADATA_SOURCE = "data/2_interim/german_frequency_join.csv"
 DEFAULT_OUTPUT_DIR = Path("data/3_output")
 
 CEFR_LEVELS = {"A1", "A2", "B1", "B2", "C1", "C2"}
-TERM_SECTION_TEMPLATES = ("Unterbegriffe", "Wortbildungen")
+TERM_SECTION_TEMPLATES = ("Wortbildungen", "Unterbegriffe")
 CSV_COLUMNS = ["word_base", "word", "word_level", "word_freq"]
 USER_AGENT = "DeutschSprint/0.1 (+https://github.com/) Python urllib"
+DEFAULT_HTTP_RETRIES = 4
+DEFAULT_HTTP_RETRY_DELAY = 2.0
+MAX_RETRY_AFTER_SECONDS = 60.0
+RETRYABLE_HTTP_STATUSES = {429, 500, 502, 503, 504}
 
 
 class ResourceError(RuntimeError):
     """Raised when an external resource cannot be read or parsed."""
 
 
-def fetch_url(url: str, timeout: float) -> str:
+def fetch_url(
+    url: str,
+    timeout: float,
+    retries: int = DEFAULT_HTTP_RETRIES,
+    retry_delay: float = DEFAULT_HTTP_RETRY_DELAY,
+) -> str:
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    last_error: urllib.error.URLError | None = None
+
+    for attempt in range(retries + 1):
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                charset = response.headers.get_content_charset() or "utf-8"
+                return response.read().decode(charset, errors="replace")
+        except urllib.error.HTTPError as exc:
+            last_error = exc
+            if exc.code not in RETRYABLE_HTTP_STATUSES or attempt >= retries:
+                break
+            sleep_before_retry(exc, attempt, retry_delay)
+        except urllib.error.URLError as exc:
+            last_error = exc
+            if attempt >= retries:
+                break
+            sleep_before_retry(exc, attempt, retry_delay)
+
+    raise ResourceError(f"failed to fetch {url}: {last_error}") from last_error
+
+
+def sleep_before_retry(
+    error: urllib.error.URLError,
+    attempt: int,
+    retry_delay: float,
+) -> None:
+    delay = retry_delay * (2**attempt)
+    if isinstance(error, urllib.error.HTTPError):
+        retry_after = error.headers.get("Retry-After")
+        if retry_after:
+            delay = parse_retry_after(retry_after, delay)
+    time.sleep(min(delay, MAX_RETRY_AFTER_SECONDS))
+
+
+def parse_retry_after(value: str, default: float) -> float:
     try:
-        with urllib.request.urlopen(request, timeout=timeout) as response:
-            charset = response.headers.get_content_charset() or "utf-8"
-            return response.read().decode(charset, errors="replace")
-    except urllib.error.URLError as exc:
-        raise ResourceError(f"failed to fetch {url}: {exc}") from exc
+        return max(0.0, float(value))
+    except ValueError:
+        return default
 
 
 def read_source(source: str, timeout: float) -> str:
@@ -99,13 +142,14 @@ def extract_german_section(wikitext: str) -> str:
 def extract_unterbegriffe(wikitext: str) -> list[str]:
     section = extract_german_section(wikitext)
     lines = section.splitlines()
+    largest_terms: list[str] = []
 
     for template_name in TERM_SECTION_TEMPLATES:
         terms = extract_linked_template_section(lines, template_name)
-        if terms:
-            return terms
+        if len(terms) > len(largest_terms):
+            largest_terms = terms
 
-    return []
+    return largest_terms
 
 
 def extract_linked_template_section(lines: list[str], template_name: str) -> list[str]:
@@ -339,6 +383,8 @@ def build_rows(
     for word in output_words(word_base, unterbegriffe):
         level = lookup_word(levels, word)
         freq = lookup_word(frequencies, word)
+        if freq is None:
+            continue
         if level is None and infer_missing_level:
             rank = lookup_word(ranks, word)
             level = estimate_level_from_rank(rank)
@@ -377,7 +423,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
             "Fetch Unterbegriffe or Wortbildungen for a German Wiktionary page and export "
-            "CEFR levels plus word frequencies as pipe-separated CSV."
+            "CEFR levels plus word frequencies as comma-separated CSV."
         )
     )
     parser.add_argument("word", help='German base word, for example "lassen".')
@@ -444,7 +490,9 @@ def main(argv: list[str] | None = None) -> int:
             ranks,
             infer_missing_level=not args.no_infer_level,
         )
-        write_rows(rows, args.output or default_output_path(args.word))
+        rows = list(rows)
+        if rows:
+            write_rows(rows, args.output or default_output_path(args.word))
     except (ResourceError, json.JSONDecodeError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
