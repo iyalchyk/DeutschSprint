@@ -15,11 +15,6 @@
         "enriched": "assets/bitten_enriched.csv"
       },
       {
-        "base": "erzählen",
-        "label": "erzählen",
-        "enriched": "assets/erzählen_enriched.csv"
-      },
-      {
         "base": "fragen",
         "label": "fragen",
         "enriched": "assets/fragen_enriched.csv"
@@ -835,6 +830,11 @@
         "base": "wissen",
         "label": "wissen",
         "enriched": "assets/wissen_enriched.csv"
+      },
+      {
+        "base": "zählen",
+        "label": "zählen",
+        "enriched": "assets/zählen_enriched.csv"
       }
     ]
   },

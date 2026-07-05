@@ -24,7 +24,6 @@ dringen,movement,Bewegung,Movement,Движение и перемещение
 drohen,manipulation,Handlung,Manipulation,Манипуляции и действие
 drücken,manipulation,Handlung,Manipulation,Манипуляции и действие
 enden,time,Zeit,Time,Время и протекание
-erzählen,communication,Kommunikation,Communication,Коммуникация
 fahren,movement,Bewegung,Movement,Движение и перемещение
 fallen,manipulation,Handlung,Manipulation,Манипуляции и действие
 fangen,manipulation,Handlung,Manipulation,Манипуляции и действие
@@ -232,6 +231,7 @@ zeichnen,work,Arbeit und Produktion,Work & Production,Работа и произ
 zeigen,communication,Kommunikation,Communication,Коммуникация
 ziehen,movement,Bewegung,Movement,Движение и перемещение
 zwingen,manipulation,Handlung,Manipulation,Манипуляции и действие
+zählen,cognition,Denken,Cognition,Когниция и мышление
 ändern,state,Zustand und Veränderung,State & Change,Состояние и изменение
 öffnen,control,Steuerung,Control,Управление и организация
 üben,manipulation,Handlung,Manipulation,Манипуляции и действие
