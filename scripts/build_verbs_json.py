@@ -74,7 +74,7 @@ def load_categories(path: Path) -> dict[str, dict[str, Any]]:
                 {
                     "base": word,
                     "label": word,
-                    "enriched": f"assets/{word}_enriched.csv",
+                    "enriched": f"assets/enriched/{word}_enriched.csv",
                 }
             )
 

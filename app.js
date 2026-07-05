@@ -2,7 +2,9 @@ const state = {
   categories: [],
   manifests: [],
   words: [],
+  loadedWordsByVerbId: new Map(),
   currentManifest: null,
+  pendingVerbId: "",
   selectedVerbId: "",
   recentVerbIds: [],
   favoriteVerbIds: [],
@@ -11,6 +13,8 @@ const state = {
 };
 
 const SETTINGS_KEY = "deutschSprint.settings";
+const FILE_CACHE_PREFIX = `${SETTINGS_KEY}.file.`;
+const FILE_CACHE_TTL_MS = 60 * 60 * 1000;
 const DEFAULT_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 const DEFAULT_WORD_BASE = "arbeiten";
 const MAX_RECENT_VERBS = 6;
@@ -112,16 +116,58 @@ function isLevelActive(level) {
 }
 
 async function loadText(path) {
+  const cachedText = readCachedFile(path);
+  if (cachedText !== null) {
+    return cachedText;
+  }
+
   const response = await fetch(path);
   if (!response.ok) {
     throw new Error(`${path} konnte nicht geladen werden.`);
   }
-  return response.text();
+  const text = await response.text();
+  writeCachedFile(path, text);
+  return text;
+}
+
+function cacheKeyForPath(path) {
+  return `${FILE_CACHE_PREFIX}${path}`;
+}
+
+function readCachedFile(path) {
+  try {
+    const raw = localStorage.getItem(cacheKeyForPath(path));
+    if (!raw) {
+      return null;
+    }
+
+    const cached = JSON.parse(raw);
+    const isFresh = Number.isFinite(cached.savedAt) && Date.now() - cached.savedAt <= FILE_CACHE_TTL_MS;
+    if (isFresh && typeof cached.text === "string") {
+      return cached.text;
+    }
+
+    localStorage.removeItem(cacheKeyForPath(path));
+  } catch (error) {
+    // Fall through to a network load when cached file data is unavailable.
+  }
+  return null;
+}
+
+function writeCachedFile(path, text) {
+  try {
+    localStorage.setItem(cacheKeyForPath(path), JSON.stringify({
+      savedAt: Date.now(),
+      text
+    }));
+  } catch (error) {
+    // The app still works if cached file storage is unavailable or full.
+  }
 }
 
 async function init() {
   try {
-    els.overviewText.textContent = "Verfügbare Dateien werden geprüft ...";
+    els.overviewText.textContent = "Verfügbare Verben werden geladen ...";
     const manifestData = await fetch("assets/verbs.json").then((response) => {
       if (!response.ok) {
         throw new Error("assets/verbs.json konnte nicht geladen werden.");
@@ -136,15 +182,21 @@ async function init() {
     bindEvents();
 
     if (state.manifests.length === 0) {
-      renderEmptyState("Keine Wörter mit vorhandener Enriched-Datei gefunden.");
+      renderEmptyState("Keine Wörter im Manifest gefunden.");
       return;
     }
 
     const settings = readSettings();
-    const selectedManifest = selectedManifestFromSettings(settings) || defaultManifest() || state.manifests[0];
-    state.selectedVerbId = selectedManifest.id;
-    renderVerbChooser();
-    await loadVerb(selectedManifest.id);
+    const selectedManifest = selectedManifestFromSettings(settings) || defaultManifest();
+    if (selectedManifest) {
+      state.selectedVerbId = selectedManifest.id;
+      renderVerbChooser();
+      await loadVerb(selectedManifest.id);
+    } else {
+      state.selectedVerbId = "";
+      renderVerbChooser();
+      renderAwaitingSelection();
+    }
   } catch (error) {
     document.body.insertAdjacentHTML("afterbegin", `<div class="error-state">${escapeHtml(error.message)}</div>`);
   }
@@ -193,73 +245,29 @@ function normalizeCategories(data) {
 
 async function buildAvailableCategories(data) {
   const categories = normalizeCategories(data);
-  const availableCategories = [];
+  return categories
+    .map((category) => {
+      const words = category.words
+        .filter((word) => word.enriched)
+        .map((word) => ({
+          ...word,
+          id: `${category.key}:${word.base}:${word.enriched}`,
+          categoryKey: category.key,
+          categoryLabel: category.label,
+          categoryLabelEn: category.labelEn,
+          categoryLabelRu: category.labelRu,
+          wordCount: null,
+          levelCounts: null
+        }))
+        .sort((a, b) => (a.label || a.base).localeCompare(b.label || b.base, "de"));
 
-  for (const category of categories) {
-    const checks = await Promise.all(category.words.map(async (word) => {
-      const wordStats = await enrichedWordStats(word.enriched);
-      if (!wordStats) {
-        return null;
-      }
-
-      const manifest = {
-        ...word,
-        id: `${category.key}:${word.base}:${word.enriched}`,
-        categoryKey: category.key,
-        categoryLabel: category.label,
-        categoryLabelEn: category.labelEn,
-        categoryLabelRu: category.labelRu,
-        wordCount: wordStats.total,
-        levelCounts: wordStats.levelCounts
-      };
-      return manifest;
-    }));
-    const words = checks
-      .filter(Boolean)
-      .sort((a, b) => (a.label || a.base).localeCompare(b.label || b.base, "de"));
-
-    if (words.length > 0) {
-      availableCategories.push({
+      return {
         ...category,
-        totalWordCount: words.reduce((total, word) => total + word.wordCount, 0),
         words
-      });
-    }
-  }
-
-  return availableCategories.sort((a, b) => {
-    const countDiff = b.totalWordCount - a.totalWordCount;
-    return countDiff || a.label.localeCompare(b.label, "de");
-  });
-}
-
-async function enrichedWordStats(path) {
-  if (!path) {
-    return null;
-  }
-
-  try {
-    const response = await fetch(path, { method: "HEAD", cache: "no-store" });
-    if (!response.ok && ![405, 501].includes(response.status)) {
-      return null;
-    }
-  } catch (error) {
-    // Fall back below for static servers or local setups that do not support HEAD.
-  }
-
-  try {
-    const response = await fetch(path, { cache: "no-store" });
-    if (!response.ok) {
-      return null;
-    }
-    const words = parseDelimited(await response.text(), "|");
-    return {
-      total: words.length,
-      levelCounts: countWordsByLevel(words)
-    };
-  } catch (error) {
-    return null;
-  }
+      };
+    })
+    .filter((category) => category.words.length > 0)
+    .sort((a, b) => a.label.localeCompare(b.label, "de"));
 }
 
 function countWordsByLevel(words) {
@@ -291,8 +299,9 @@ function renderVerbChooser() {
     return;
   }
 
+  const hasCurrentManifest = Boolean(currentManifest());
   els.changeVerbButton.disabled = false;
-  els.favoriteCurrentVerb.disabled = false;
+  els.favoriteCurrentVerb.disabled = !hasCurrentManifest;
   renderCurrentVerb();
   if (els.verbDialog.open) {
     renderVerbResults();
@@ -302,13 +311,18 @@ function renderVerbChooser() {
 function renderCurrentVerb() {
   const manifest = currentManifest();
   if (!manifest) {
-    els.currentVerbName.textContent = "-";
-    els.currentVerbMeta.textContent = "";
+    els.currentVerbName.textContent = "Verb auswählen";
+    els.currentVerbMeta.textContent = `${state.manifests.length} verbs available`;
+    els.changeVerbButton.textContent = "Choose verb";
+    els.favoriteCurrentVerb.textContent = "☆";
+    els.favoriteCurrentVerb.setAttribute("aria-pressed", "false");
+    els.favoriteCurrentVerb.setAttribute("aria-label", "Favorite current verb");
     return;
   }
 
+  els.changeVerbButton.textContent = "Change verb";
   els.currentVerbName.textContent = manifest.label || manifest.base;
-  els.currentVerbMeta.textContent = `${activeWordCount(manifest)} words · ${manifest.categoryLabel}`;
+  els.currentVerbMeta.textContent = currentVerbMeta(manifest);
   els.favoriteCurrentVerb.textContent = isFavorite(manifest.id) ? "★" : "☆";
   els.favoriteCurrentVerb.setAttribute("aria-pressed", String(isFavorite(manifest.id)));
   els.favoriteCurrentVerb.setAttribute("aria-label", `${isFavorite(manifest.id) ? "Remove favorite" : "Favorite"} ${manifest.label || manifest.base}`);
@@ -452,7 +466,7 @@ function searchedVerbGroups(query) {
 function renderVerbResult(item, query) {
   const selected = item.id === state.selectedVerbId;
   const favorite = isFavorite(item.id);
-  const meta = [item.categoryLabelEn || item.categoryLabel, `${activeWordCount(item)} words`].filter(Boolean).join(" · ");
+  const meta = verbResultMeta(item);
   return `
     <div class="verb-result ${selected ? "is-selected" : ""}" role="option" aria-selected="false" data-verb-id="${escapeHtml(item.id)}">
       <button class="verb-result-main" type="button">
@@ -575,14 +589,7 @@ function escapeRegExp(value) {
 }
 
 function sortedCategoriesForActiveLevels() {
-  return [...state.categories].sort((a, b) => {
-    const countDiff = activeCategoryWordCount(b) - activeCategoryWordCount(a);
-    return countDiff || a.label.localeCompare(b.label, "de");
-  });
-}
-
-function activeCategoryWordCount(category) {
-  return category.words.reduce((total, word) => total + activeWordCount(word), 0);
+  return [...state.categories].sort((a, b) => a.label.localeCompare(b.label, "de"));
 }
 
 function activeWordCount(word) {
@@ -590,6 +597,21 @@ function activeWordCount(word) {
   return Object.entries(word.levelCounts || {}).reduce((total, [level, count]) => {
     return !level || levels.has(level) ? total + count : total;
   }, 0);
+}
+
+function hasWordStats(word) {
+  return word.wordCount !== null && word.levelCounts !== null;
+}
+
+function currentVerbMeta(manifest) {
+  const count = hasWordStats(manifest) ? `${activeWordCount(manifest)} words` : "";
+  const loading = state.pendingVerbId === manifest.id ? "Loading" : "";
+  return [loading || count, manifest.categoryLabel].filter(Boolean).join(" · ");
+}
+
+function verbResultMeta(manifest) {
+  const count = hasWordStats(manifest) ? `${activeWordCount(manifest)} words` : "";
+  return [manifest.categoryLabelEn || manifest.categoryLabel, count].filter(Boolean).join(" · ");
 }
 
 async function loadVerb(id) {
@@ -600,13 +622,39 @@ async function loadVerb(id) {
 
   state.selectedVerbId = id;
   state.currentManifest = manifest;
+  state.pendingVerbId = id;
   addRecentVerb(id);
   saveSettings();
   renderVerbChooser();
-  els.overviewText.textContent = "Daten werden geladen ...";
-  const wordText = await loadText(manifest.enriched);
+  renderLoadingState();
 
-  state.words = parseDelimited(wordText, "|").sort((a, b) => {
+  try {
+    const words = state.loadedWordsByVerbId.get(id) || parseVerbWords(await loadText(manifest.enriched));
+    state.loadedWordsByVerbId.set(id, words);
+
+    if (state.selectedVerbId !== id) {
+      return;
+    }
+
+    manifest.wordCount = words.length;
+    manifest.levelCounts = countWordsByLevel(words);
+    state.words = words;
+    state.pendingVerbId = "";
+    renderVerbChooser();
+    renderOverview();
+    renderWords();
+  } catch (error) {
+    if (state.selectedVerbId !== id) {
+      return;
+    }
+    state.pendingVerbId = "";
+    renderVerbChooser();
+    renderEmptyState(`Die Datei für „${verbLabel(manifest)}“ konnte nicht geladen werden.`);
+  }
+}
+
+function parseVerbWords(text) {
+  return parseDelimited(text, "|").sort((a, b) => {
     const levelDiff = levelSort(a.word_level) - levelSort(b.word_level);
     if (levelDiff) {
       return levelDiff;
@@ -614,9 +662,6 @@ async function loadVerb(id) {
     const rankDiff = frequencyRank(a) - frequencyRank(b);
     return rankDiff || a.word.localeCompare(b.word, "de");
   });
-
-  renderOverview();
-  renderWords();
 }
 
 function renderOverview() {
@@ -629,6 +674,11 @@ function renderOverview() {
 }
 
 function renderWords() {
+  if (state.pendingVerbId === state.selectedVerbId && state.words.length === 0) {
+    renderLoadingState();
+    return;
+  }
+
   const query = els.wordSearch.value.trim().toLowerCase();
   const languages = selectedTranslations();
   els.wordTable.classList.toggle("no-translations", languages.length === 0);
@@ -670,6 +720,11 @@ function renderWords() {
 function handleSettingsChange() {
   saveSettings();
   renderVerbChooser();
+  if (!currentManifest() && !state.pendingVerbId) {
+    renderAwaitingSelection();
+    return;
+  }
+
   renderWords();
   updateStats();
 }
@@ -738,6 +793,22 @@ function updateStats() {
   const levels = unique(words.map((word) => word.word_level)).sort((a, b) => levelSort(a) - levelSort(b));
   els.wordCount.textContent = words.length;
   els.levelRange.textContent = levels.length > 1 ? `${levels[0]}-${levels[levels.length - 1]}` : levels[0] || "-";
+}
+
+function renderAwaitingSelection() {
+  state.words = [];
+  updateStats();
+  els.overviewText.textContent = "Wähle ein Verb, um die Wortfamilie zu laden.";
+  const colspan = selectedTranslations().length > 0 ? 8 : 7;
+  els.wordTableBody.innerHTML = `<tr><td colspan="${colspan}" class="empty-cell">Wähle ein Verb aus.</td></tr>`;
+}
+
+function renderLoadingState() {
+  state.words = [];
+  updateStats();
+  els.overviewText.textContent = "Daten werden geladen ...";
+  const colspan = selectedTranslations().length > 0 ? 8 : 7;
+  els.wordTableBody.innerHTML = `<tr><td colspan="${colspan}" class="empty-cell">Daten werden geladen ...</td></tr>`;
 }
 
 function renderEmptyState(message) {
