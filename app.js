@@ -510,7 +510,7 @@ function verbSearchScore(item, query) {
   const label = normalizeSearch(verbLabel(item));
   const base = normalizeSearch(item.base);
   const category = normalizeSearch([item.categoryLabel, item.categoryLabelEn, item.categoryLabelRu].join(" "));
-  const haystack = `${label} ${base} ${category}`;
+  const verbHaystack = `${label} ${base}`;
 
   if (label === normalizedQuery || base === normalizedQuery) {
     return 100;
@@ -524,7 +524,7 @@ function verbSearchScore(item, query) {
   if (category.includes(normalizedQuery)) {
     return 50;
   }
-  if (fuzzyIncludes(haystack, normalizedQuery)) {
+  if (fuzzyIncludes(verbHaystack, normalizedQuery)) {
     return 30;
   }
   return 0;
