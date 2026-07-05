@@ -7,82 +7,82 @@
       {
         "base": "antworten",
         "label": "antworten",
-        "enriched": "assets/antworten_enriched.csv"
+        "enriched": "assets/enriched/antworten_enriched.csv"
       },
       {
         "base": "bitten",
         "label": "bitten",
-        "enriched": "assets/bitten_enriched.csv"
+        "enriched": "assets/enriched/bitten_enriched.csv"
       },
       {
         "base": "fragen",
         "label": "fragen",
-        "enriched": "assets/fragen_enriched.csv"
+        "enriched": "assets/enriched/fragen_enriched.csv"
       },
       {
         "base": "klingeln",
         "label": "klingeln",
-        "enriched": "assets/klingeln_enriched.csv"
+        "enriched": "assets/enriched/klingeln_enriched.csv"
       },
       {
         "base": "melden",
         "label": "melden",
-        "enriched": "assets/melden_enriched.csv"
+        "enriched": "assets/enriched/melden_enriched.csv"
       },
       {
         "base": "nennen",
         "label": "nennen",
-        "enriched": "assets/nennen_enriched.csv"
+        "enriched": "assets/enriched/nennen_enriched.csv"
       },
       {
         "base": "reden",
         "label": "reden",
-        "enriched": "assets/reden_enriched.csv"
+        "enriched": "assets/enriched/reden_enriched.csv"
       },
       {
         "base": "rufen",
         "label": "rufen",
-        "enriched": "assets/rufen_enriched.csv"
+        "enriched": "assets/enriched/rufen_enriched.csv"
       },
       {
         "base": "sagen",
         "label": "sagen",
-        "enriched": "assets/sagen_enriched.csv"
+        "enriched": "assets/enriched/sagen_enriched.csv"
       },
       {
         "base": "schreiben",
         "label": "schreiben",
-        "enriched": "assets/schreiben_enriched.csv"
+        "enriched": "assets/enriched/schreiben_enriched.csv"
       },
       {
         "base": "schreien",
         "label": "schreien",
-        "enriched": "assets/schreien_enriched.csv"
+        "enriched": "assets/enriched/schreien_enriched.csv"
       },
       {
         "base": "senden",
         "label": "senden",
-        "enriched": "assets/senden_enriched.csv"
+        "enriched": "assets/enriched/senden_enriched.csv"
       },
       {
         "base": "sprechen",
         "label": "sprechen",
-        "enriched": "assets/sprechen_enriched.csv"
+        "enriched": "assets/enriched/sprechen_enriched.csv"
       },
       {
         "base": "tönen",
         "label": "tönen",
-        "enriched": "assets/tönen_enriched.csv"
+        "enriched": "assets/enriched/tönen_enriched.csv"
       },
       {
         "base": "vermitteln",
         "label": "vermitteln",
-        "enriched": "assets/vermitteln_enriched.csv"
+        "enriched": "assets/enriched/vermitteln_enriched.csv"
       },
       {
         "base": "zeigen",
         "label": "zeigen",
-        "enriched": "assets/zeigen_enriched.csv"
+        "enriched": "assets/enriched/zeigen_enriched.csv"
       }
     ]
   },
@@ -94,107 +94,107 @@
       {
         "base": "arbeiten",
         "label": "arbeiten",
-        "enriched": "assets/arbeiten_enriched.csv"
+        "enriched": "assets/enriched/arbeiten_enriched.csv"
       },
       {
         "base": "backen",
         "label": "backen",
-        "enriched": "assets/backen_enriched.csv"
+        "enriched": "assets/enriched/backen_enriched.csv"
       },
       {
         "base": "bauen",
         "label": "bauen",
-        "enriched": "assets/bauen_enriched.csv"
+        "enriched": "assets/enriched/bauen_enriched.csv"
       },
       {
         "base": "bohren",
         "label": "bohren",
-        "enriched": "assets/bohren_enriched.csv"
+        "enriched": "assets/enriched/bohren_enriched.csv"
       },
       {
         "base": "feilen",
         "label": "feilen",
-        "enriched": "assets/feilen_enriched.csv"
+        "enriched": "assets/enriched/feilen_enriched.csv"
       },
       {
         "base": "filtern",
         "label": "filtern",
-        "enriched": "assets/filtern_enriched.csv"
+        "enriched": "assets/enriched/filtern_enriched.csv"
       },
       {
         "base": "formen",
         "label": "formen",
-        "enriched": "assets/formen_enriched.csv"
+        "enriched": "assets/enriched/formen_enriched.csv"
       },
       {
         "base": "gießen",
         "label": "gießen",
-        "enriched": "assets/gießen_enriched.csv"
+        "enriched": "assets/enriched/gießen_enriched.csv"
       },
       {
         "base": "graben",
         "label": "graben",
-        "enriched": "assets/graben_enriched.csv"
+        "enriched": "assets/enriched/graben_enriched.csv"
       },
       {
         "base": "gründen",
         "label": "gründen",
-        "enriched": "assets/gründen_enriched.csv"
+        "enriched": "assets/enriched/gründen_enriched.csv"
       },
       {
         "base": "heizen",
         "label": "heizen",
-        "enriched": "assets/heizen_enriched.csv"
+        "enriched": "assets/enriched/heizen_enriched.csv"
       },
       {
         "base": "kochen",
         "label": "kochen",
-        "enriched": "assets/kochen_enriched.csv"
+        "enriched": "assets/enriched/kochen_enriched.csv"
       },
       {
         "base": "malen",
         "label": "malen",
-        "enriched": "assets/malen_enriched.csv"
+        "enriched": "assets/enriched/malen_enriched.csv"
       },
       {
         "base": "pflanzen",
         "label": "pflanzen",
-        "enriched": "assets/pflanzen_enriched.csv"
+        "enriched": "assets/enriched/pflanzen_enriched.csv"
       },
       {
         "base": "putzen",
         "label": "putzen",
-        "enriched": "assets/putzen_enriched.csv"
+        "enriched": "assets/enriched/putzen_enriched.csv"
       },
       {
         "base": "reinigen",
         "label": "reinigen",
-        "enriched": "assets/reinigen_enriched.csv"
+        "enriched": "assets/enriched/reinigen_enriched.csv"
       },
       {
         "base": "schaffen",
         "label": "schaffen",
-        "enriched": "assets/schaffen_enriched.csv"
+        "enriched": "assets/enriched/schaffen_enriched.csv"
       },
       {
         "base": "schneiden",
         "label": "schneiden",
-        "enriched": "assets/schneiden_enriched.csv"
+        "enriched": "assets/enriched/schneiden_enriched.csv"
       },
       {
         "base": "spülen",
         "label": "spülen",
-        "enriched": "assets/spülen_enriched.csv"
+        "enriched": "assets/enriched/spülen_enriched.csv"
       },
       {
         "base": "würzen",
         "label": "würzen",
-        "enriched": "assets/würzen_enriched.csv"
+        "enriched": "assets/enriched/würzen_enriched.csv"
       },
       {
         "base": "zeichnen",
         "label": "zeichnen",
-        "enriched": "assets/zeichnen_enriched.csv"
+        "enriched": "assets/enriched/zeichnen_enriched.csv"
       }
     ]
   },
@@ -206,27 +206,27 @@
       {
         "base": "beginnen",
         "label": "beginnen",
-        "enriched": "assets/beginnen_enriched.csv"
+        "enriched": "assets/enriched/beginnen_enriched.csv"
       },
       {
         "base": "dauern",
         "label": "dauern",
-        "enriched": "assets/dauern_enriched.csv"
+        "enriched": "assets/enriched/dauern_enriched.csv"
       },
       {
         "base": "enden",
         "label": "enden",
-        "enriched": "assets/enden_enriched.csv"
+        "enriched": "assets/enriched/enden_enriched.csv"
       },
       {
         "base": "starten",
         "label": "starten",
-        "enriched": "assets/starten_enriched.csv"
+        "enriched": "assets/enriched/starten_enriched.csv"
       },
       {
         "base": "warten",
         "label": "warten",
-        "enriched": "assets/warten_enriched.csv"
+        "enriched": "assets/enriched/warten_enriched.csv"
       }
     ]
   },
@@ -238,422 +238,422 @@
       {
         "base": "bergen",
         "label": "bergen",
-        "enriched": "assets/bergen_enriched.csv"
+        "enriched": "assets/enriched/bergen_enriched.csv"
       },
       {
         "base": "bilden",
         "label": "bilden",
-        "enriched": "assets/bilden_enriched.csv"
+        "enriched": "assets/enriched/bilden_enriched.csv"
       },
       {
         "base": "binden",
         "label": "binden",
-        "enriched": "assets/binden_enriched.csv"
+        "enriched": "assets/enriched/binden_enriched.csv"
       },
       {
         "base": "blasen",
         "label": "blasen",
-        "enriched": "assets/blasen_enriched.csv"
+        "enriched": "assets/enriched/blasen_enriched.csv"
       },
       {
         "base": "blinken",
         "label": "blinken",
-        "enriched": "assets/blinken_enriched.csv"
+        "enriched": "assets/enriched/blinken_enriched.csv"
       },
       {
         "base": "brechen",
         "label": "brechen",
-        "enriched": "assets/brechen_enriched.csv"
+        "enriched": "assets/enriched/brechen_enriched.csv"
       },
       {
         "base": "bringen",
         "label": "bringen",
-        "enriched": "assets/bringen_enriched.csv"
+        "enriched": "assets/enriched/bringen_enriched.csv"
       },
       {
         "base": "decken",
         "label": "decken",
-        "enriched": "assets/decken_enriched.csv"
+        "enriched": "assets/enriched/decken_enriched.csv"
       },
       {
         "base": "drehen",
         "label": "drehen",
-        "enriched": "assets/drehen_enriched.csv"
+        "enriched": "assets/enriched/drehen_enriched.csv"
       },
       {
         "base": "drohen",
         "label": "drohen",
-        "enriched": "assets/drohen_enriched.csv"
+        "enriched": "assets/enriched/drohen_enriched.csv"
       },
       {
         "base": "drücken",
         "label": "drücken",
-        "enriched": "assets/drücken_enriched.csv"
+        "enriched": "assets/enriched/drücken_enriched.csv"
       },
       {
         "base": "fallen",
         "label": "fallen",
-        "enriched": "assets/fallen_enriched.csv"
+        "enriched": "assets/enriched/fallen_enriched.csv"
       },
       {
         "base": "fangen",
         "label": "fangen",
-        "enriched": "assets/fangen_enriched.csv"
+        "enriched": "assets/enriched/fangen_enriched.csv"
       },
       {
         "base": "fassen",
         "label": "fassen",
-        "enriched": "assets/fassen_enriched.csv"
+        "enriched": "assets/enriched/fassen_enriched.csv"
       },
       {
         "base": "fechten",
         "label": "fechten",
-        "enriched": "assets/fechten_enriched.csv"
+        "enriched": "assets/enriched/fechten_enriched.csv"
       },
       {
         "base": "fegen",
         "label": "fegen",
-        "enriched": "assets/fegen_enriched.csv"
+        "enriched": "assets/enriched/fegen_enriched.csv"
       },
       {
         "base": "feuchten",
         "label": "feuchten",
-        "enriched": "assets/feuchten_enriched.csv"
+        "enriched": "assets/enriched/feuchten_enriched.csv"
       },
       {
         "base": "feuern",
         "label": "feuern",
-        "enriched": "assets/feuern_enriched.csv"
+        "enriched": "assets/enriched/feuern_enriched.csv"
       },
       {
         "base": "füllen",
         "label": "füllen",
-        "enriched": "assets/füllen_enriched.csv"
+        "enriched": "assets/enriched/füllen_enriched.csv"
       },
       {
         "base": "geben",
         "label": "geben",
-        "enriched": "assets/geben_enriched.csv"
+        "enriched": "assets/enriched/geben_enriched.csv"
       },
       {
         "base": "gleichen",
         "label": "gleichen",
-        "enriched": "assets/gleichen_enriched.csv"
+        "enriched": "assets/enriched/gleichen_enriched.csv"
       },
       {
         "base": "greifen",
         "label": "greifen",
-        "enriched": "assets/greifen_enriched.csv"
+        "enriched": "assets/enriched/greifen_enriched.csv"
       },
       {
         "base": "heben",
         "label": "heben",
-        "enriched": "assets/heben_enriched.csv"
+        "enriched": "assets/enriched/heben_enriched.csv"
       },
       {
         "base": "hocken",
         "label": "hocken",
-        "enriched": "assets/hocken_enriched.csv"
+        "enriched": "assets/enriched/hocken_enriched.csv"
       },
       {
         "base": "holen",
         "label": "holen",
-        "enriched": "assets/holen_enriched.csv"
+        "enriched": "assets/enriched/holen_enriched.csv"
       },
       {
         "base": "hüten",
         "label": "hüten",
-        "enriched": "assets/hüten_enriched.csv"
+        "enriched": "assets/enriched/hüten_enriched.csv"
       },
       {
         "base": "irren",
         "label": "irren",
-        "enriched": "assets/irren_enriched.csv"
+        "enriched": "assets/enriched/irren_enriched.csv"
       },
       {
         "base": "kaufen",
         "label": "kaufen",
-        "enriched": "assets/kaufen_enriched.csv"
+        "enriched": "assets/enriched/kaufen_enriched.csv"
       },
       {
         "base": "kehren",
         "label": "kehren",
-        "enriched": "assets/kehren_enriched.csv"
+        "enriched": "assets/enriched/kehren_enriched.csv"
       },
       {
         "base": "kleben",
         "label": "kleben",
-        "enriched": "assets/kleben_enriched.csv"
+        "enriched": "assets/enriched/kleben_enriched.csv"
       },
       {
         "base": "klopfen",
         "label": "klopfen",
-        "enriched": "assets/klopfen_enriched.csv"
+        "enriched": "assets/enriched/klopfen_enriched.csv"
       },
       {
         "base": "knüpfen",
         "label": "knüpfen",
-        "enriched": "assets/knüpfen_enriched.csv"
+        "enriched": "assets/enriched/knüpfen_enriched.csv"
       },
       {
         "base": "koppeln",
         "label": "koppeln",
-        "enriched": "assets/koppeln_enriched.csv"
+        "enriched": "assets/enriched/koppeln_enriched.csv"
       },
       {
         "base": "kratzen",
         "label": "kratzen",
-        "enriched": "assets/kratzen_enriched.csv"
+        "enriched": "assets/enriched/kratzen_enriched.csv"
       },
       {
         "base": "kreuzen",
         "label": "kreuzen",
-        "enriched": "assets/kreuzen_enriched.csv"
+        "enriched": "assets/enriched/kreuzen_enriched.csv"
       },
       {
         "base": "lachen",
         "label": "lachen",
-        "enriched": "assets/lachen_enriched.csv"
+        "enriched": "assets/enriched/lachen_enriched.csv"
       },
       {
         "base": "lassen",
         "label": "lassen",
-        "enriched": "assets/lassen_enriched.csv"
+        "enriched": "assets/enriched/lassen_enriched.csv"
       },
       {
         "base": "leben",
         "label": "leben",
-        "enriched": "assets/leben_enriched.csv"
+        "enriched": "assets/enriched/leben_enriched.csv"
       },
       {
         "base": "liefern",
         "label": "liefern",
-        "enriched": "assets/liefern_enriched.csv"
+        "enriched": "assets/enriched/liefern_enriched.csv"
       },
       {
         "base": "löschen",
         "label": "löschen",
-        "enriched": "assets/löschen_enriched.csv"
+        "enriched": "assets/enriched/löschen_enriched.csv"
       },
       {
         "base": "machen",
         "label": "machen",
-        "enriched": "assets/machen_enriched.csv"
+        "enriched": "assets/enriched/machen_enriched.csv"
       },
       {
         "base": "messen",
         "label": "messen",
-        "enriched": "assets/messen_enriched.csv"
+        "enriched": "assets/enriched/messen_enriched.csv"
       },
       {
         "base": "mischen",
         "label": "mischen",
-        "enriched": "assets/mischen_enriched.csv"
+        "enriched": "assets/enriched/mischen_enriched.csv"
       },
       {
         "base": "nehmen",
         "label": "nehmen",
-        "enriched": "assets/nehmen_enriched.csv"
+        "enriched": "assets/enriched/nehmen_enriched.csv"
       },
       {
         "base": "nutzen",
         "label": "nutzen",
-        "enriched": "assets/nutzen_enriched.csv"
+        "enriched": "assets/enriched/nutzen_enriched.csv"
       },
       {
         "base": "prägen",
         "label": "prägen",
-        "enriched": "assets/prägen_enriched.csv"
+        "enriched": "assets/enriched/prägen_enriched.csv"
       },
       {
         "base": "reißen",
         "label": "reißen",
-        "enriched": "assets/reißen_enriched.csv"
+        "enriched": "assets/enriched/reißen_enriched.csv"
       },
       {
         "base": "riegeln",
         "label": "riegeln",
-        "enriched": "assets/riegeln_enriched.csv"
+        "enriched": "assets/enriched/riegeln_enriched.csv"
       },
       {
         "base": "ringen",
         "label": "ringen",
-        "enriched": "assets/ringen_enriched.csv"
+        "enriched": "assets/enriched/ringen_enriched.csv"
       },
       {
         "base": "rühren",
         "label": "rühren",
-        "enriched": "assets/rühren_enriched.csv"
+        "enriched": "assets/enriched/rühren_enriched.csv"
       },
       {
         "base": "sammeln",
         "label": "sammeln",
-        "enriched": "assets/sammeln_enriched.csv"
+        "enriched": "assets/enriched/sammeln_enriched.csv"
       },
       {
         "base": "scheiden",
         "label": "scheiden",
-        "enriched": "assets/scheiden_enriched.csv"
+        "enriched": "assets/enriched/scheiden_enriched.csv"
       },
       {
         "base": "schicken",
         "label": "schicken",
-        "enriched": "assets/schicken_enriched.csv"
+        "enriched": "assets/enriched/schicken_enriched.csv"
       },
       {
         "base": "schieben",
         "label": "schieben",
-        "enriched": "assets/schieben_enriched.csv"
+        "enriched": "assets/enriched/schieben_enriched.csv"
       },
       {
         "base": "schießen",
         "label": "schießen",
-        "enriched": "assets/schießen_enriched.csv"
+        "enriched": "assets/enriched/schießen_enriched.csv"
       },
       {
         "base": "schirmen",
         "label": "schirmen",
-        "enriched": "assets/schirmen_enriched.csv"
+        "enriched": "assets/enriched/schirmen_enriched.csv"
       },
       {
         "base": "schlagen",
         "label": "schlagen",
-        "enriched": "assets/schlagen_enriched.csv"
+        "enriched": "assets/enriched/schlagen_enriched.csv"
       },
       {
         "base": "schöpfen",
         "label": "schöpfen",
-        "enriched": "assets/schöpfen_enriched.csv"
+        "enriched": "assets/enriched/schöpfen_enriched.csv"
       },
       {
         "base": "senken",
         "label": "senken",
-        "enriched": "assets/senken_enriched.csv"
+        "enriched": "assets/enriched/senken_enriched.csv"
       },
       {
         "base": "singen",
         "label": "singen",
-        "enriched": "assets/singen_enriched.csv"
+        "enriched": "assets/enriched/singen_enriched.csv"
       },
       {
         "base": "sinken",
         "label": "sinken",
-        "enriched": "assets/sinken_enriched.csv"
+        "enriched": "assets/enriched/sinken_enriched.csv"
       },
       {
         "base": "sorgen",
         "label": "sorgen",
-        "enriched": "assets/sorgen_enriched.csv"
+        "enriched": "assets/enriched/sorgen_enriched.csv"
       },
       {
         "base": "spannen",
         "label": "spannen",
-        "enriched": "assets/spannen_enriched.csv"
+        "enriched": "assets/enriched/spannen_enriched.csv"
       },
       {
         "base": "sparen",
         "label": "sparen",
-        "enriched": "assets/sparen_enriched.csv"
+        "enriched": "assets/enriched/sparen_enriched.csv"
       },
       {
         "base": "spielen",
         "label": "spielen",
-        "enriched": "assets/spielen_enriched.csv"
+        "enriched": "assets/enriched/spielen_enriched.csv"
       },
       {
         "base": "stoßen",
         "label": "stoßen",
-        "enriched": "assets/stoßen_enriched.csv"
+        "enriched": "assets/enriched/stoßen_enriched.csv"
       },
       {
         "base": "streben",
         "label": "streben",
-        "enriched": "assets/streben_enriched.csv"
+        "enriched": "assets/enriched/streben_enriched.csv"
       },
       {
         "base": "streichen",
         "label": "streichen",
-        "enriched": "assets/streichen_enriched.csv"
+        "enriched": "assets/enriched/streichen_enriched.csv"
       },
       {
         "base": "säen",
         "label": "säen",
-        "enriched": "assets/säen_enriched.csv"
+        "enriched": "assets/enriched/säen_enriched.csv"
       },
       {
         "base": "teilen",
         "label": "teilen",
-        "enriched": "assets/teilen_enriched.csv"
+        "enriched": "assets/enriched/teilen_enriched.csv"
       },
       {
         "base": "tragen",
         "label": "tragen",
-        "enriched": "assets/tragen_enriched.csv"
+        "enriched": "assets/enriched/tragen_enriched.csv"
       },
       {
         "base": "trennen",
         "label": "trennen",
-        "enriched": "assets/trennen_enriched.csv"
+        "enriched": "assets/enriched/trennen_enriched.csv"
       },
       {
         "base": "treten",
         "label": "treten",
-        "enriched": "assets/treten_enriched.csv"
+        "enriched": "assets/enriched/treten_enriched.csv"
       },
       {
         "base": "trinken",
         "label": "trinken",
-        "enriched": "assets/trinken_enriched.csv"
+        "enriched": "assets/enriched/trinken_enriched.csv"
       },
       {
         "base": "trocknen",
         "label": "trocknen",
-        "enriched": "assets/trocknen_enriched.csv"
+        "enriched": "assets/enriched/trocknen_enriched.csv"
       },
       {
         "base": "tun",
         "label": "tun",
-        "enriched": "assets/tun_enriched.csv"
+        "enriched": "assets/enriched/tun_enriched.csv"
       },
       {
         "base": "wagen",
         "label": "wagen",
-        "enriched": "assets/wagen_enriched.csv"
+        "enriched": "assets/enriched/wagen_enriched.csv"
       },
       {
         "base": "wandeln",
         "label": "wandeln",
-        "enriched": "assets/wandeln_enriched.csv"
+        "enriched": "assets/enriched/wandeln_enriched.csv"
       },
       {
         "base": "weichen",
         "label": "weichen",
-        "enriched": "assets/weichen_enriched.csv"
+        "enriched": "assets/enriched/weichen_enriched.csv"
       },
       {
         "base": "wenden",
         "label": "wenden",
-        "enriched": "assets/wenden_enriched.csv"
+        "enriched": "assets/enriched/wenden_enriched.csv"
       },
       {
         "base": "werfen",
         "label": "werfen",
-        "enriched": "assets/werfen_enriched.csv"
+        "enriched": "assets/enriched/werfen_enriched.csv"
       },
       {
         "base": "wischen",
         "label": "wischen",
-        "enriched": "assets/wischen_enriched.csv"
+        "enriched": "assets/enriched/wischen_enriched.csv"
       },
       {
         "base": "zwingen",
         "label": "zwingen",
-        "enriched": "assets/zwingen_enriched.csv"
+        "enriched": "assets/enriched/zwingen_enriched.csv"
       },
       {
         "base": "üben",
         "label": "üben",
-        "enriched": "assets/üben_enriched.csv"
+        "enriched": "assets/enriched/üben_enriched.csv"
       }
     ]
   },
@@ -665,62 +665,62 @@
       {
         "base": "bleiben",
         "label": "bleiben",
-        "enriched": "assets/bleiben_enriched.csv"
+        "enriched": "assets/enriched/bleiben_enriched.csv"
       },
       {
         "base": "hängen",
         "label": "hängen",
-        "enriched": "assets/hängen_enriched.csv"
+        "enriched": "assets/enriched/hängen_enriched.csv"
       },
       {
         "base": "legen",
         "label": "legen",
-        "enriched": "assets/legen_enriched.csv"
+        "enriched": "assets/enriched/legen_enriched.csv"
       },
       {
         "base": "lehnen",
         "label": "lehnen",
-        "enriched": "assets/lehnen_enriched.csv"
+        "enriched": "assets/enriched/lehnen_enriched.csv"
       },
       {
         "base": "liegen",
         "label": "liegen",
-        "enriched": "assets/liegen_enriched.csv"
+        "enriched": "assets/enriched/liegen_enriched.csv"
       },
       {
         "base": "setzen",
         "label": "setzen",
-        "enriched": "assets/setzen_enriched.csv"
+        "enriched": "assets/enriched/setzen_enriched.csv"
       },
       {
         "base": "sitzen",
         "label": "sitzen",
-        "enriched": "assets/sitzen_enriched.csv"
+        "enriched": "assets/enriched/sitzen_enriched.csv"
       },
       {
         "base": "stecken",
         "label": "stecken",
-        "enriched": "assets/stecken_enriched.csv"
+        "enriched": "assets/enriched/stecken_enriched.csv"
       },
       {
         "base": "stehen",
         "label": "stehen",
-        "enriched": "assets/stehen_enriched.csv"
+        "enriched": "assets/enriched/stehen_enriched.csv"
       },
       {
         "base": "stellen",
         "label": "stellen",
-        "enriched": "assets/stellen_enriched.csv"
+        "enriched": "assets/enriched/stellen_enriched.csv"
       },
       {
         "base": "verweilen",
         "label": "verweilen",
-        "enriched": "assets/verweilen_enriched.csv"
+        "enriched": "assets/enriched/verweilen_enriched.csv"
       },
       {
         "base": "wohnen",
         "label": "wohnen",
-        "enriched": "assets/wohnen_enriched.csv"
+        "enriched": "assets/enriched/wohnen_enriched.csv"
       }
     ]
   },
@@ -732,27 +732,27 @@
       {
         "base": "blühen",
         "label": "blühen",
-        "enriched": "assets/blühen_enriched.csv"
+        "enriched": "assets/enriched/blühen_enriched.csv"
       },
       {
         "base": "heulen",
         "label": "heulen",
-        "enriched": "assets/heulen_enriched.csv"
+        "enriched": "assets/enriched/heulen_enriched.csv"
       },
       {
         "base": "regen",
         "label": "regen",
-        "enriched": "assets/regen_enriched.csv"
+        "enriched": "assets/enriched/regen_enriched.csv"
       },
       {
         "base": "strömen",
         "label": "strömen",
-        "enriched": "assets/strömen_enriched.csv"
+        "enriched": "assets/enriched/strömen_enriched.csv"
       },
       {
         "base": "wachsen",
         "label": "wachsen",
-        "enriched": "assets/wachsen_enriched.csv"
+        "enriched": "assets/enriched/wachsen_enriched.csv"
       }
     ]
   },
@@ -764,77 +764,77 @@
       {
         "base": "denken",
         "label": "denken",
-        "enriched": "assets/denken_enriched.csv"
+        "enriched": "assets/enriched/denken_enriched.csv"
       },
       {
         "base": "finden",
         "label": "finden",
-        "enriched": "assets/finden_enriched.csv"
+        "enriched": "assets/enriched/finden_enriched.csv"
       },
       {
         "base": "kennen",
         "label": "kennen",
-        "enriched": "assets/kennen_enriched.csv"
+        "enriched": "assets/enriched/kennen_enriched.csv"
       },
       {
         "base": "klären",
         "label": "klären",
-        "enriched": "assets/klären_enriched.csv"
+        "enriched": "assets/enriched/klären_enriched.csv"
       },
       {
         "base": "lernen",
         "label": "lernen",
-        "enriched": "assets/lernen_enriched.csv"
+        "enriched": "assets/enriched/lernen_enriched.csv"
       },
       {
         "base": "lesen",
         "label": "lesen",
-        "enriched": "assets/lesen_enriched.csv"
+        "enriched": "assets/enriched/lesen_enriched.csv"
       },
       {
         "base": "merken",
         "label": "merken",
-        "enriched": "assets/merken_enriched.csv"
+        "enriched": "assets/enriched/merken_enriched.csv"
       },
       {
         "base": "planen",
         "label": "planen",
-        "enriched": "assets/planen_enriched.csv"
+        "enriched": "assets/enriched/planen_enriched.csv"
       },
       {
         "base": "prüfen",
         "label": "prüfen",
-        "enriched": "assets/prüfen_enriched.csv"
+        "enriched": "assets/enriched/prüfen_enriched.csv"
       },
       {
         "base": "raten",
         "label": "raten",
-        "enriched": "assets/raten_enriched.csv"
+        "enriched": "assets/enriched/raten_enriched.csv"
       },
       {
         "base": "rechnen",
         "label": "rechnen",
-        "enriched": "assets/rechnen_enriched.csv"
+        "enriched": "assets/enriched/rechnen_enriched.csv"
       },
       {
         "base": "suchen",
         "label": "suchen",
-        "enriched": "assets/suchen_enriched.csv"
+        "enriched": "assets/enriched/suchen_enriched.csv"
       },
       {
         "base": "werten",
         "label": "werten",
-        "enriched": "assets/werten_enriched.csv"
+        "enriched": "assets/enriched/werten_enriched.csv"
       },
       {
         "base": "wissen",
         "label": "wissen",
-        "enriched": "assets/wissen_enriched.csv"
+        "enriched": "assets/enriched/wissen_enriched.csv"
       },
       {
         "base": "zählen",
         "label": "zählen",
-        "enriched": "assets/zählen_enriched.csv"
+        "enriched": "assets/enriched/zählen_enriched.csv"
       }
     ]
   },
@@ -846,62 +846,62 @@
       {
         "base": "dienen",
         "label": "dienen",
-        "enriched": "assets/dienen_enriched.csv"
+        "enriched": "assets/enriched/dienen_enriched.csv"
       },
       {
         "base": "handeln",
         "label": "handeln",
-        "enriched": "assets/handeln_enriched.csv"
+        "enriched": "assets/enriched/handeln_enriched.csv"
       },
       {
         "base": "helfen",
         "label": "helfen",
-        "enriched": "assets/helfen_enriched.csv"
+        "enriched": "assets/enriched/helfen_enriched.csv"
       },
       {
         "base": "kümmern",
         "label": "kümmern",
-        "enriched": "assets/kümmern_enriched.csv"
+        "enriched": "assets/enriched/kümmern_enriched.csv"
       },
       {
         "base": "küssen",
         "label": "küssen",
-        "enriched": "assets/küssen_enriched.csv"
+        "enriched": "assets/enriched/küssen_enriched.csv"
       },
       {
         "base": "pflegen",
         "label": "pflegen",
-        "enriched": "assets/pflegen_enriched.csv"
+        "enriched": "assets/enriched/pflegen_enriched.csv"
       },
       {
         "base": "retten",
         "label": "retten",
-        "enriched": "assets/retten_enriched.csv"
+        "enriched": "assets/enriched/retten_enriched.csv"
       },
       {
         "base": "schützen",
         "label": "schützen",
-        "enriched": "assets/schützen_enriched.csv"
+        "enriched": "assets/enriched/schützen_enriched.csv"
       },
       {
         "base": "streiten",
         "label": "streiten",
-        "enriched": "assets/streiten_enriched.csv"
+        "enriched": "assets/enriched/streiten_enriched.csv"
       },
       {
         "base": "treffen",
         "label": "treffen",
-        "enriched": "assets/treffen_enriched.csv"
+        "enriched": "assets/enriched/treffen_enriched.csv"
       },
       {
         "base": "wehren",
         "label": "wehren",
-        "enriched": "assets/wehren_enriched.csv"
+        "enriched": "assets/enriched/wehren_enriched.csv"
       },
       {
         "base": "wünschen",
         "label": "wünschen",
-        "enriched": "assets/wünschen_enriched.csv"
+        "enriched": "assets/enriched/wünschen_enriched.csv"
       }
     ]
   },
@@ -913,137 +913,137 @@
       {
         "base": "dringen",
         "label": "dringen",
-        "enriched": "assets/dringen_enriched.csv"
+        "enriched": "assets/enriched/dringen_enriched.csv"
       },
       {
         "base": "fahren",
         "label": "fahren",
-        "enriched": "assets/fahren_enriched.csv"
+        "enriched": "assets/enriched/fahren_enriched.csv"
       },
       {
         "base": "fliegen",
         "label": "fliegen",
-        "enriched": "assets/fliegen_enriched.csv"
+        "enriched": "assets/enriched/fliegen_enriched.csv"
       },
       {
         "base": "fliehen",
         "label": "fliehen",
-        "enriched": "assets/fliehen_enriched.csv"
+        "enriched": "assets/enriched/fliehen_enriched.csv"
       },
       {
         "base": "fließen",
         "label": "fließen",
-        "enriched": "assets/fließen_enriched.csv"
+        "enriched": "assets/enriched/fließen_enriched.csv"
       },
       {
         "base": "gehen",
         "label": "gehen",
-        "enriched": "assets/gehen_enriched.csv"
+        "enriched": "assets/enriched/gehen_enriched.csv"
       },
       {
         "base": "gleiten",
         "label": "gleiten",
-        "enriched": "assets/gleiten_enriched.csv"
+        "enriched": "assets/enriched/gleiten_enriched.csv"
       },
       {
         "base": "klettern",
         "label": "klettern",
-        "enriched": "assets/klettern_enriched.csv"
+        "enriched": "assets/enriched/klettern_enriched.csv"
       },
       {
         "base": "kommen",
         "label": "kommen",
-        "enriched": "assets/kommen_enriched.csv"
+        "enriched": "assets/enriched/kommen_enriched.csv"
       },
       {
         "base": "kreisen",
         "label": "kreisen",
-        "enriched": "assets/kreisen_enriched.csv"
+        "enriched": "assets/enriched/kreisen_enriched.csv"
       },
       {
         "base": "landen",
         "label": "landen",
-        "enriched": "assets/landen_enriched.csv"
+        "enriched": "assets/enriched/landen_enriched.csv"
       },
       {
         "base": "laufen",
         "label": "laufen",
-        "enriched": "assets/laufen_enriched.csv"
+        "enriched": "assets/enriched/laufen_enriched.csv"
       },
       {
         "base": "münden",
         "label": "münden",
-        "enriched": "assets/münden_enriched.csv"
+        "enriched": "assets/enriched/münden_enriched.csv"
       },
       {
         "base": "reisen",
         "label": "reisen",
-        "enriched": "assets/reisen_enriched.csv"
+        "enriched": "assets/enriched/reisen_enriched.csv"
       },
       {
         "base": "reiten",
         "label": "reiten",
-        "enriched": "assets/reiten_enriched.csv"
+        "enriched": "assets/enriched/reiten_enriched.csv"
       },
       {
         "base": "rennen",
         "label": "rennen",
-        "enriched": "assets/rennen_enriched.csv"
+        "enriched": "assets/enriched/rennen_enriched.csv"
       },
       {
         "base": "rollen",
         "label": "rollen",
-        "enriched": "assets/rollen_enriched.csv"
+        "enriched": "assets/enriched/rollen_enriched.csv"
       },
       {
         "base": "schleichen",
         "label": "schleichen",
-        "enriched": "assets/schleichen_enriched.csv"
+        "enriched": "assets/enriched/schleichen_enriched.csv"
       },
       {
         "base": "schwimmen",
         "label": "schwimmen",
-        "enriched": "assets/schwimmen_enriched.csv"
+        "enriched": "assets/enriched/schwimmen_enriched.csv"
       },
       {
         "base": "segeln",
         "label": "segeln",
-        "enriched": "assets/segeln_enriched.csv"
+        "enriched": "assets/enriched/segeln_enriched.csv"
       },
       {
         "base": "springen",
         "label": "springen",
-        "enriched": "assets/springen_enriched.csv"
+        "enriched": "assets/enriched/springen_enriched.csv"
       },
       {
         "base": "steigen",
         "label": "steigen",
-        "enriched": "assets/steigen_enriched.csv"
+        "enriched": "assets/enriched/steigen_enriched.csv"
       },
       {
         "base": "stürzen",
         "label": "stürzen",
-        "enriched": "assets/stürzen_enriched.csv"
+        "enriched": "assets/enriched/stürzen_enriched.csv"
       },
       {
         "base": "tauchen",
         "label": "tauchen",
-        "enriched": "assets/tauchen_enriched.csv"
+        "enriched": "assets/enriched/tauchen_enriched.csv"
       },
       {
         "base": "treiben",
         "label": "treiben",
-        "enriched": "assets/treiben_enriched.csv"
+        "enriched": "assets/enriched/treiben_enriched.csv"
       },
       {
         "base": "wandern",
         "label": "wandern",
-        "enriched": "assets/wandern_enriched.csv"
+        "enriched": "assets/enriched/wandern_enriched.csv"
       },
       {
         "base": "ziehen",
         "label": "ziehen",
-        "enriched": "assets/ziehen_enriched.csv"
+        "enriched": "assets/enriched/ziehen_enriched.csv"
       }
     ]
   },
@@ -1055,42 +1055,42 @@
       {
         "base": "fehlen",
         "label": "fehlen",
-        "enriched": "assets/fehlen_enriched.csv"
+        "enriched": "assets/enriched/fehlen_enriched.csv"
       },
       {
         "base": "frieren",
         "label": "frieren",
-        "enriched": "assets/frieren_enriched.csv"
+        "enriched": "assets/enriched/frieren_enriched.csv"
       },
       {
         "base": "fühlen",
         "label": "fühlen",
-        "enriched": "assets/fühlen_enriched.csv"
+        "enriched": "assets/enriched/fühlen_enriched.csv"
       },
       {
         "base": "hören",
         "label": "hören",
-        "enriched": "assets/hören_enriched.csv"
+        "enriched": "assets/enriched/hören_enriched.csv"
       },
       {
         "base": "leuchten",
         "label": "leuchten",
-        "enriched": "assets/leuchten_enriched.csv"
+        "enriched": "assets/enriched/leuchten_enriched.csv"
       },
       {
         "base": "riechen",
         "label": "riechen",
-        "enriched": "assets/riechen_enriched.csv"
+        "enriched": "assets/enriched/riechen_enriched.csv"
       },
       {
         "base": "scheinen",
         "label": "scheinen",
-        "enriched": "assets/scheinen_enriched.csv"
+        "enriched": "assets/enriched/scheinen_enriched.csv"
       },
       {
         "base": "sehen",
         "label": "sehen",
-        "enriched": "assets/sehen_enriched.csv"
+        "enriched": "assets/enriched/sehen_enriched.csv"
       }
     ]
   },
@@ -1102,97 +1102,97 @@
       {
         "base": "führen",
         "label": "führen",
-        "enriched": "assets/führen_enriched.csv"
+        "enriched": "assets/enriched/führen_enriched.csv"
       },
       {
         "base": "halten",
         "label": "halten",
-        "enriched": "assets/halten_enriched.csv"
+        "enriched": "assets/enriched/halten_enriched.csv"
       },
       {
         "base": "laden",
         "label": "laden",
-        "enriched": "assets/laden_enriched.csv"
+        "enriched": "assets/enriched/laden_enriched.csv"
       },
       {
         "base": "leiten",
         "label": "leiten",
-        "enriched": "assets/leiten_enriched.csv"
+        "enriched": "assets/enriched/leiten_enriched.csv"
       },
       {
         "base": "lenken",
         "label": "lenken",
-        "enriched": "assets/lenken_enriched.csv"
+        "enriched": "assets/enriched/lenken_enriched.csv"
       },
       {
         "base": "ordnen",
         "label": "ordnen",
-        "enriched": "assets/ordnen_enriched.csv"
+        "enriched": "assets/enriched/ordnen_enriched.csv"
       },
       {
         "base": "regeln",
         "label": "regeln",
-        "enriched": "assets/regeln_enriched.csv"
+        "enriched": "assets/enriched/regeln_enriched.csv"
       },
       {
         "base": "reichen",
         "label": "reichen",
-        "enriched": "assets/reichen_enriched.csv"
+        "enriched": "assets/enriched/reichen_enriched.csv"
       },
       {
         "base": "richten",
         "label": "richten",
-        "enriched": "assets/richten_enriched.csv"
+        "enriched": "assets/enriched/richten_enriched.csv"
       },
       {
         "base": "schalten",
         "label": "schalten",
-        "enriched": "assets/schalten_enriched.csv"
+        "enriched": "assets/enriched/schalten_enriched.csv"
       },
       {
         "base": "schließen",
         "label": "schließen",
-        "enriched": "assets/schließen_enriched.csv"
+        "enriched": "assets/enriched/schließen_enriched.csv"
       },
       {
         "base": "sichern",
         "label": "sichern",
-        "enriched": "assets/sichern_enriched.csv"
+        "enriched": "assets/enriched/sichern_enriched.csv"
       },
       {
         "base": "speichern",
         "label": "speichern",
-        "enriched": "assets/speichern_enriched.csv"
+        "enriched": "assets/enriched/speichern_enriched.csv"
       },
       {
         "base": "steuern",
         "label": "steuern",
-        "enriched": "assets/steuern_enriched.csv"
+        "enriched": "assets/enriched/steuern_enriched.csv"
       },
       {
         "base": "stimmen",
         "label": "stimmen",
-        "enriched": "assets/stimmen_enriched.csv"
+        "enriched": "assets/enriched/stimmen_enriched.csv"
       },
       {
         "base": "wecken",
         "label": "wecken",
-        "enriched": "assets/wecken_enriched.csv"
+        "enriched": "assets/enriched/wecken_enriched.csv"
       },
       {
         "base": "weisen",
         "label": "weisen",
-        "enriched": "assets/weisen_enriched.csv"
+        "enriched": "assets/enriched/weisen_enriched.csv"
       },
       {
         "base": "zahlen",
         "label": "zahlen",
-        "enriched": "assets/zahlen_enriched.csv"
+        "enriched": "assets/enriched/zahlen_enriched.csv"
       },
       {
         "base": "öffnen",
         "label": "öffnen",
-        "enriched": "assets/öffnen_enriched.csv"
+        "enriched": "assets/enriched/öffnen_enriched.csv"
       }
     ]
   },
@@ -1204,62 +1204,62 @@
       {
         "base": "gelingen",
         "label": "gelingen",
-        "enriched": "assets/gelingen_enriched.csv"
+        "enriched": "assets/enriched/gelingen_enriched.csv"
       },
       {
         "base": "gelten",
         "label": "gelten",
-        "enriched": "assets/gelten_enriched.csv"
+        "enriched": "assets/enriched/gelten_enriched.csv"
       },
       {
         "base": "gewinnen",
         "label": "gewinnen",
-        "enriched": "assets/gewinnen_enriched.csv"
+        "enriched": "assets/enriched/gewinnen_enriched.csv"
       },
       {
         "base": "heilen",
         "label": "heilen",
-        "enriched": "assets/heilen_enriched.csv"
+        "enriched": "assets/enriched/heilen_enriched.csv"
       },
       {
         "base": "kosten",
         "label": "kosten",
-        "enriched": "assets/kosten_enriched.csv"
+        "enriched": "assets/enriched/kosten_enriched.csv"
       },
       {
         "base": "lösen",
         "label": "lösen",
-        "enriched": "assets/lösen_enriched.csv"
+        "enriched": "assets/enriched/lösen_enriched.csv"
       },
       {
         "base": "passen",
         "label": "passen",
-        "enriched": "assets/passen_enriched.csv"
+        "enriched": "assets/enriched/passen_enriched.csv"
       },
       {
         "base": "stärken",
         "label": "stärken",
-        "enriched": "assets/stärken_enriched.csv"
+        "enriched": "assets/enriched/stärken_enriched.csv"
       },
       {
         "base": "verlieren",
         "label": "verlieren",
-        "enriched": "assets/verlieren_enriched.csv"
+        "enriched": "assets/enriched/verlieren_enriched.csv"
       },
       {
         "base": "wechseln",
         "label": "wechseln",
-        "enriched": "assets/wechseln_enriched.csv"
+        "enriched": "assets/enriched/wechseln_enriched.csv"
       },
       {
         "base": "wirken",
         "label": "wirken",
-        "enriched": "assets/wirken_enriched.csv"
+        "enriched": "assets/enriched/wirken_enriched.csv"
       },
       {
         "base": "ändern",
         "label": "ändern",
-        "enriched": "assets/ändern_enriched.csv"
+        "enriched": "assets/enriched/ändern_enriched.csv"
       }
     ]
   }
