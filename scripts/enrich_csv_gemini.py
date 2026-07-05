@@ -251,9 +251,24 @@ def iter_input_words(input_dir: Path) -> list[str]:
     return words
 
 
+def output_path_for_word(output_dir: Path, word: str) -> Path:
+    return output_dir / f"{word}_enriched.csv"
+
+
+def pending_input_words(args: argparse.Namespace, words: list[str]) -> list[str]:
+    if args.overwrite:
+        return words
+
+    return [
+        word
+        for word in words
+        if not output_path_for_word(args.output_dir, word).exists()
+    ]
+
+
 def enrich_word(args: argparse.Namespace, api_key: str, prompt_text: str, word: str) -> Path:
     input_path = args.input_dir / f"{word}.csv"
-    output_path = args.output_dir / f"{word}_enriched.csv"
+    output_path = output_path_for_word(args.output_dir, word)
     if output_path.exists() and not args.overwrite:
         tqdm.write(f"Skipping {word}: {output_path} already exists")
         return output_path
@@ -286,7 +301,16 @@ def main(argv: list[str]) -> int:
 
     failed_words: list[str] = []
     words = iter_input_words(args.input_dir)
-    for word in tqdm(words, desc="Enriching words", unit="word"):
+    pending_words = pending_input_words(args, words)
+    skipped_existing = len(words) - len(pending_words)
+
+    if skipped_existing:
+        print(f"Skipping {skipped_existing} existing output file(s)")
+    if not pending_words:
+        print("No input files need enrichment")
+        return 0
+
+    for word in tqdm(pending_words, desc="Enriching words", unit="word"):
         try:
             enrich_word(args, api_key, prompt_text, word)
         except (OSError, ValidationError, EnrichmentError) as exc:
