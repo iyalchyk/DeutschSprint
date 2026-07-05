@@ -13,12 +13,33 @@
           <p class="eyebrow">DeutschSprint</p>
           <h1>Grundverben und Wortfamilien</h1>
         </div>
-        <label class="verb-picker">
-          <span>Grundverb</span>
-          <select id="verbSelect" aria-label="Grundverb auswählen"></select>
-        </label>
+        <div class="current-verb" aria-live="polite">
+          <span>Current verb</span>
+          <strong id="currentVerbName">-</strong>
+          <span id="currentVerbMeta" class="current-verb-meta"></span>
+          <div class="current-verb-actions">
+            <button id="favoriteCurrentVerb" class="icon-button" type="button" aria-label="Favorite current verb" aria-pressed="false" title="Favorite current verb">☆</button>
+            <button id="changeVerbButton" type="button">Change verb</button>
+          </div>
+        </div>
       </div>
     </header>
+
+    <dialog id="verbDialog" class="verb-dialog" aria-labelledby="verbDialogTitle">
+      <div class="verb-dialog-panel">
+        <div class="verb-dialog-header">
+          <div>
+            <p class="eyebrow">DeutschSprint</p>
+            <h2 id="verbDialogTitle">Change verb</h2>
+          </div>
+          <button id="closeVerbDialog" class="icon-button" type="button" aria-label="Close verb search" title="Close verb search">×</button>
+        </div>
+        <div class="verb-search-field">
+          <input id="verbSearch" type="search" placeholder="Search verb..." aria-label="Search verb" autocomplete="off">
+        </div>
+        <div id="verbResults" class="verb-results" role="listbox" aria-label="Available verbs"></div>
+      </div>
+    </dialog>
 
     <main>
       <section class="settings-band" aria-labelledby="settingsTitle">
