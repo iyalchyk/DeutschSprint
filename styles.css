@@ -264,7 +264,7 @@ h3 {
 }
 
 .verb-result.is-selected .verb-result-name::after {
-  content: "Current";
+  content: "Aktuell";
   margin-left: 8px;
   border-radius: 999px;
   background: #d9eee5;

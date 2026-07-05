@@ -293,7 +293,7 @@ function currentManifest() {
 function renderVerbChooser() {
   if (state.categories.length === 0) {
     els.currentVerbName.textContent = "-";
-    els.currentVerbMeta.textContent = "No available verbs";
+    els.currentVerbMeta.textContent = "Keine Verben verfügbar";
     els.changeVerbButton.disabled = true;
     els.favoriteCurrentVerb.disabled = true;
     return;
@@ -312,20 +312,20 @@ function renderCurrentVerb() {
   const manifest = currentManifest();
   if (!manifest) {
     els.currentVerbName.textContent = "Verb auswählen";
-    els.currentVerbMeta.textContent = `${state.manifests.length} verbs available`;
-    els.changeVerbButton.textContent = "Choose verb";
+    els.currentVerbMeta.textContent = `${state.manifests.length} Verben verfügbar`;
+    els.changeVerbButton.textContent = "Verb auswählen";
     els.favoriteCurrentVerb.textContent = "☆";
     els.favoriteCurrentVerb.setAttribute("aria-pressed", "false");
-    els.favoriteCurrentVerb.setAttribute("aria-label", "Favorite current verb");
+    els.favoriteCurrentVerb.setAttribute("aria-label", "Aktuelles Verb merken");
     return;
   }
 
-  els.changeVerbButton.textContent = "Change verb";
+  els.changeVerbButton.textContent = "Verb wechseln";
   els.currentVerbName.textContent = manifest.label || manifest.base;
   els.currentVerbMeta.textContent = currentVerbMeta(manifest);
   els.favoriteCurrentVerb.textContent = isFavorite(manifest.id) ? "★" : "☆";
   els.favoriteCurrentVerb.setAttribute("aria-pressed", String(isFavorite(manifest.id)));
-  els.favoriteCurrentVerb.setAttribute("aria-label", `${isFavorite(manifest.id) ? "Remove favorite" : "Favorite"} ${manifest.label || manifest.base}`);
+  els.favoriteCurrentVerb.setAttribute("aria-label", `${isFavorite(manifest.id) ? "Merkliste entfernen:" : "Merken:"} ${manifest.label || manifest.base}`);
 }
 
 function openVerbDialog() {
@@ -432,7 +432,7 @@ function renderVerbResults() {
     state.activeVerbIndex = 0;
   }
 
-  els.verbResults.innerHTML = html || '<p class="empty-cell">No matching verbs.</p>';
+  els.verbResults.innerHTML = html || '<p class="empty-cell">Keine passenden Verben.</p>';
   updateActiveVerbOption();
 }
 
@@ -445,15 +445,15 @@ function defaultVerbGroups() {
     .filter((item) => !recentAndFavoriteIds.has(item.id));
 
   return [
-    { label: "Recent", items: recent },
-    { label: "Favorites", items: favorites },
-    { label: "All verbs", items: all }
+    { label: "Zuletzt verwendet", items: recent },
+    { label: "Merkliste", items: favorites },
+    { label: "Alle Verben", items: all }
   ];
 }
 
 function searchedVerbGroups(query) {
   return [{
-    label: "Results",
+    label: "Suchergebnisse",
     items: state.manifests
       .map((item) => ({ item, score: verbSearchScore(item, query) }))
       .filter((result) => result.score > 0)
@@ -473,7 +473,7 @@ function renderVerbResult(item, query) {
         <span class="verb-result-name">${highlightMatch(verbLabel(item), query)}</span>
         <span class="verb-result-meta">${escapeHtml(meta)}</span>
       </button>
-      <button class="favorite-toggle ${favorite ? "is-favorite" : ""}" type="button" data-favorite-id="${escapeHtml(item.id)}" aria-pressed="${favorite}" aria-label="${favorite ? "Remove favorite" : "Favorite"} ${escapeHtml(verbLabel(item))}" title="${favorite ? "Remove favorite" : "Favorite"}">${favorite ? "★" : "☆"}</button>
+      <button class="favorite-toggle ${favorite ? "is-favorite" : ""}" type="button" data-favorite-id="${escapeHtml(item.id)}" aria-pressed="${favorite}" aria-label="${favorite ? "Aus Merkliste entfernen:" : "Merken:"} ${escapeHtml(verbLabel(item))}" title="${favorite ? "Aus Merkliste entfernen" : "Merken"}">${favorite ? "★" : "☆"}</button>
     </div>
   `;
 }
@@ -604,14 +604,14 @@ function hasWordStats(word) {
 }
 
 function currentVerbMeta(manifest) {
-  const count = hasWordStats(manifest) ? `${activeWordCount(manifest)} words` : "";
-  const loading = state.pendingVerbId === manifest.id ? "Loading" : "";
+  const count = hasWordStats(manifest) ? `${activeWordCount(manifest)} Wörter` : "";
+  const loading = state.pendingVerbId === manifest.id ? "Lädt" : "";
   return [loading || count, manifest.categoryLabel].filter(Boolean).join(" · ");
 }
 
 function verbResultMeta(manifest) {
-  const count = hasWordStats(manifest) ? `${activeWordCount(manifest)} words` : "";
-  return [manifest.categoryLabelEn || manifest.categoryLabel, count].filter(Boolean).join(" · ");
+  const count = hasWordStats(manifest) ? `${activeWordCount(manifest)} Wörter` : "";
+  return [manifest.categoryLabel, count].filter(Boolean).join(" · ");
 }
 
 async function loadVerb(id) {
