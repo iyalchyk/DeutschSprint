@@ -431,8 +431,23 @@ h3 {
   padding: 38px 0 18px;
 }
 
-.search-wrap {
-  width: min(360px, 100%);
+.word-actions {
+  width: min(540px, 100%);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.word-actions input {
+  min-width: 220px;
+}
+
+.word-actions .export-button {
+  width: 44px;
+  min-width: 44px;
+  padding: 0;
+  font-size: 1.25rem;
+  line-height: 1;
 }
 
 .table-wrap {
@@ -585,6 +600,10 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .word-actions {
+    width: 100%;
+  }
+
   .settings-grid {
     grid-template-columns: 1fr;
   }
@@ -603,6 +622,14 @@ h3 {
   .current-verb-actions {
     display: grid;
     grid-template-columns: 44px minmax(0, 1fr);
+  }
+
+  .word-actions {
+    display: flex;
+  }
+
+  .word-actions input {
+    min-width: 0;
   }
 
   .verb-dialog {

@@ -35,6 +35,7 @@ const els = {
   levelCheckboxes: [...document.querySelectorAll('input[name="level"]')],
   wordCount: document.querySelector("#wordCount"),
   levelRange: document.querySelector("#levelRange"),
+  exportWordsButton: document.querySelector("#exportWordsButton"),
   wordSearch: document.querySelector("#wordSearch"),
   wordTable: document.querySelector(".word-table"),
   wordTableBody: document.querySelector("#wordTableBody")
@@ -217,6 +218,7 @@ function bindEvents() {
   });
   els.verbSearch.addEventListener("keydown", handleVerbSearchKeydown);
   els.verbResults.addEventListener("click", handleVerbResultsClick);
+  els.exportWordsButton.addEventListener("click", exportWordsToExcel);
   els.wordSearch.addEventListener("input", renderWords);
   els.translationEn.addEventListener("change", handleSettingsChange);
   els.translationRu.addEventListener("change", handleSettingsChange);
@@ -679,23 +681,10 @@ function renderWords() {
     return;
   }
 
-  const query = els.wordSearch.value.trim().toLowerCase();
   const languages = selectedTranslations();
   els.wordTable.classList.toggle("no-translations", languages.length === 0);
-
-  const visibleWords = state.words.filter((word) => {
-    const haystack = [
-      word.word,
-      word.word_synonyms,
-      word.sentence_example,
-      word.sentence_synonym,
-      word.typical_collocations,
-      word.usage_comments_en,
-      ...languages.map((language) => language === "en" ? word.word_translation_en : word.word_translation_ru),
-      ...languages.map((language) => language === "en" ? word.sentence_example_translation_en : word.sentence_example_translation_ru)
-    ].join(" ").toLowerCase();
-    return haystack.includes(query);
-  });
+  const visibleWords = filteredWords(languages);
+  els.exportWordsButton.disabled = visibleWords.length === 0;
 
   if (visibleWords.length === 0) {
     const colspan = languages.length > 0 ? 8 : 7;
@@ -715,6 +704,271 @@ function renderWords() {
       <td data-label="Verwendung">${renderUsageComments(word)}</td>
     </tr>
   `).join("");
+}
+
+function filteredWords(languages = selectedTranslations()) {
+  const query = els.wordSearch.value.trim().toLowerCase();
+  return state.words.filter((word) => {
+    const haystack = [
+      word.word,
+      word.word_synonyms,
+      word.sentence_example,
+      word.sentence_synonym,
+      word.typical_collocations,
+      word.usage_comments_en,
+      ...languages.map((language) => language === "en" ? word.word_translation_en : word.word_translation_ru),
+      ...languages.map((language) => language === "en" ? word.sentence_example_translation_en : word.sentence_example_translation_ru)
+    ].join(" ").toLowerCase();
+    return haystack.includes(query);
+  });
+}
+
+function exportWordsToExcel() {
+  const languages = selectedTranslations();
+  const words = filteredWords(languages);
+  if (words.length === 0) {
+    return;
+  }
+
+  const columns = exportColumns(languages);
+  const title = state.currentManifest?.label || state.currentManifest?.base || "Wortschatz";
+  const blob = createXlsxBlob(columns, words);
+  const link = document.createElement("a");
+  const url = URL.createObjectURL(blob);
+  link.href = url;
+  link.download = `${fileSlug(title)}-wortschatz.xlsx`;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  window.setTimeout(() => URL.revokeObjectURL(url), 0);
+}
+
+function exportColumns(languages) {
+  const columns = [
+    { label: "Wort", value: (word) => word.word },
+    { label: "Niveau", value: (word) => word.word_level },
+    { label: "Synonyme", value: (word) => word.word_synonyms },
+    { label: "Beispiel", value: (word) => exampleTextForExport(word, languages) },
+    { label: "Satzparaphrase", value: (word) => word.sentence_synonym },
+    { label: "Kollokationen", value: (word) => splitListForExport(word.typical_collocations) },
+    { label: "Verwendung", value: (word) => word.usage_comments_en }
+  ];
+
+  if (languages.length > 0) {
+    columns.splice(2, 0, { label: "Übersetzung", value: (word) => wordTranslationsForExport(word, languages) });
+  }
+
+  return columns;
+}
+
+function wordTranslationsForExport(word, languages) {
+  return languages.map((language) => {
+    return language === "en" ? word.word_translation_en : word.word_translation_ru;
+  }).filter(Boolean).join("\n");
+}
+
+function exampleTextForExport(word, languages) {
+  const translations = languages.map((language) => {
+    return language === "en" ? word.sentence_example_translation_en : word.sentence_example_translation_ru;
+  }).filter(Boolean);
+  return [word.sentence_example, ...translations].filter(Boolean).join("\n");
+}
+
+function splitListForExport(value) {
+  return String(value || "")
+    .split(";")
+    .map((item) => item.trim())
+    .filter(Boolean)
+    .join("\n");
+}
+
+function createXlsxBlob(columns, words) {
+  const worksheet = createWorksheetXml(columns, words);
+  const files = {
+    "[Content_Types].xml": `<?xml version="1.0" encoding="UTF-8"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+  <Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>
+  <Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>
+</Types>`,
+    "_rels/.rels": `<?xml version="1.0" encoding="UTF-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/>
+</Relationships>`,
+    "xl/workbook.xml": `<?xml version="1.0" encoding="UTF-8"?>
+<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+  <sheets>
+    <sheet name="Wortschatz" sheetId="1" r:id="rId1"/>
+  </sheets>
+</workbook>`,
+    "xl/_rels/workbook.xml.rels": `<?xml version="1.0" encoding="UTF-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>
+</Relationships>`,
+    "xl/worksheets/sheet1.xml": worksheet
+  };
+  return createZipBlob(files, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+}
+
+function createWorksheetXml(columns, words) {
+  const headerRow = createWorksheetRow(columns.map((column) => column.label), 1);
+  const bodyRows = words.map((word, index) => {
+    return createWorksheetRow(columns.map((column) => column.value(word)), index + 2);
+  }).join("");
+  const columnDefinitions = columns.map((_, index) => {
+    const column = index + 1;
+    return `<col min="${column}" max="${column}" width="${index < 2 ? 14 : 34}" customWidth="1"/>`;
+  }).join("");
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+  <cols>${columnDefinitions}</cols>
+  <sheetData>${headerRow}${bodyRows}</sheetData>
+</worksheet>`;
+}
+
+function createWorksheetRow(values, rowNumber) {
+  const cells = values.map((value, index) => {
+    const ref = `${spreadsheetColumnName(index + 1)}${rowNumber}`;
+    return `<c r="${ref}" t="inlineStr"><is><t xml:space="preserve">${escapeXml(value || "-")}</t></is></c>`;
+  }).join("");
+  return `<row r="${rowNumber}">${cells}</row>`;
+}
+
+function spreadsheetColumnName(index) {
+  let name = "";
+  let value = index;
+  while (value > 0) {
+    value -= 1;
+    name = String.fromCharCode(65 + (value % 26)) + name;
+    value = Math.floor(value / 26);
+  }
+  return name;
+}
+
+function createZipBlob(files, type) {
+  const encoder = new TextEncoder();
+  const localParts = [];
+  const centralParts = [];
+  let offset = 0;
+
+  Object.entries(files).forEach(([name, content]) => {
+    const nameBytes = encoder.encode(name);
+    const data = encoder.encode(content);
+    const crc = crc32(data);
+    const localHeader = concatBytes(
+      uint32(0x04034b50),
+      uint16(20),
+      uint16(0),
+      uint16(0),
+      uint16(0),
+      uint16(0),
+      uint32(crc),
+      uint32(data.length),
+      uint32(data.length),
+      uint16(nameBytes.length),
+      uint16(0)
+    );
+    const centralHeader = concatBytes(
+      uint32(0x02014b50),
+      uint16(20),
+      uint16(20),
+      uint16(0),
+      uint16(0),
+      uint16(0),
+      uint16(0),
+      uint32(crc),
+      uint32(data.length),
+      uint32(data.length),
+      uint16(nameBytes.length),
+      uint16(0),
+      uint16(0),
+      uint16(0),
+      uint16(0),
+      uint32(0),
+      uint32(offset)
+    );
+
+    localParts.push(localHeader, nameBytes, data);
+    centralParts.push(centralHeader, nameBytes);
+    offset += localHeader.length + nameBytes.length + data.length;
+  });
+
+  const centralDirectoryOffset = offset;
+  const centralDirectorySize = centralParts.reduce((total, part) => total + part.length, 0);
+  const endRecord = concatBytes(
+    uint32(0x06054b50),
+    uint16(0),
+    uint16(0),
+    uint16(Object.keys(files).length),
+    uint16(Object.keys(files).length),
+    uint32(centralDirectorySize),
+    uint32(centralDirectoryOffset),
+    uint16(0)
+  );
+
+  return new Blob([...localParts, ...centralParts, endRecord], { type });
+}
+
+function crc32(bytes) {
+  let crc = -1;
+  for (const byte of bytes) {
+    crc = (crc >>> 8) ^ CRC_TABLE[(crc ^ byte) & 0xff];
+  }
+  return (crc ^ -1) >>> 0;
+}
+
+const CRC_TABLE = Array.from({ length: 256 }, (_, index) => {
+  let value = index;
+  for (let bit = 0; bit < 8; bit += 1) {
+    value = value & 1 ? 0xedb88320 ^ (value >>> 1) : value >>> 1;
+  }
+  return value >>> 0;
+});
+
+function uint16(value) {
+  return new Uint8Array([value & 0xff, (value >>> 8) & 0xff]);
+}
+
+function uint32(value) {
+  return new Uint8Array([
+    value & 0xff,
+    (value >>> 8) & 0xff,
+    (value >>> 16) & 0xff,
+    (value >>> 24) & 0xff
+  ]);
+}
+
+function concatBytes(...parts) {
+  const length = parts.reduce((total, part) => total + part.length, 0);
+  const bytes = new Uint8Array(length);
+  let offset = 0;
+  parts.forEach((part) => {
+    bytes.set(part, offset);
+    offset += part.length;
+  });
+  return bytes;
+}
+
+function escapeXml(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
+function fileSlug(value) {
+  const slug = String(value || "wortschatz")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/ß/g, "ss")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return slug || "wortschatz";
 }
 
 function handleSettingsChange() {
@@ -798,6 +1052,7 @@ function updateStats() {
 function renderAwaitingSelection() {
   state.words = [];
   updateStats();
+  els.exportWordsButton.disabled = true;
   els.overviewText.textContent = "Wähle ein Verb, um die Wortfamilie zu laden.";
   const colspan = selectedTranslations().length > 0 ? 8 : 7;
   els.wordTableBody.innerHTML = `<tr><td colspan="${colspan}" class="empty-cell">Wähle ein Verb aus.</td></tr>`;
@@ -806,6 +1061,7 @@ function renderAwaitingSelection() {
 function renderLoadingState() {
   state.words = [];
   updateStats();
+  els.exportWordsButton.disabled = true;
   els.overviewText.textContent = "Daten werden geladen ...";
   const colspan = selectedTranslations().length > 0 ? 8 : 7;
   els.wordTableBody.innerHTML = `<tr><td colspan="${colspan}" class="empty-cell">Daten werden geladen ...</td></tr>`;
@@ -814,6 +1070,7 @@ function renderLoadingState() {
 function renderEmptyState(message) {
   state.words = [];
   updateStats();
+  els.exportWordsButton.disabled = true;
   els.overviewText.textContent = message;
   els.wordTableBody.innerHTML = '<tr><td colspan="8" class="empty-cell">Keine Daten verfügbar.</td></tr>';
 }
