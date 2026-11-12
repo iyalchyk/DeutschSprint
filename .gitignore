@@ -2,3 +2,7 @@
 .venv
 .idea
 data
+*.xls
+.DS_Store
+__pycache__/
+*.py[cod]
