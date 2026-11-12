@@ -19,6 +19,7 @@ from pathlib import Path
 
 WIKTIONARY_API_URL = "https://de.wiktionary.org/w/api.php"
 DEFAULT_WORD_METADATA_SOURCE = "data/2_interim/german_frequency_join.csv"
+DEFAULT_DEREKO_SOURCE = Path("data/1_input/DeReKo-2014-II-MainArchive-STT.100000.freq/DeReKo-2014-II-MainArchive-STT.100000.freq")
 DEFAULT_OUTPUT_DIR = Path("data/3_output")
 
 CEFR_LEVELS = {"A1", "A2", "B1", "B2", "C1", "C2"}
@@ -29,6 +30,11 @@ DEFAULT_HTTP_RETRIES = 4
 DEFAULT_HTTP_RETRY_DELAY = 2.0
 MAX_RETRY_AFTER_SECONDS = 60.0
 RETRYABLE_HTTP_STATUSES = {429, 500, 502, 503, 504}
+VERB_PREFIXES = frozenset("""ab an auf aus auseinander be bei da dar durch ein emp empor ent
+entgegen entlang entzwei er fehl feil fern fest fort frei für ge gegen gegenüber heim her heraus
+hin hinein hinter hoch inne irre kund los miss mit nach neben nieder ob preis quer rück statt still
+teil tot übel über überein um unter ver voll vor wahr weg weis weiter wett wider wieder wohl zer
+zu zurecht zurück zusammen zwischen""".split())
 
 
 class ResourceError(RuntimeError):
@@ -139,17 +145,22 @@ def extract_german_section(wikitext: str) -> str:
     return "\n".join(lines[start:end])
 
 
-def extract_unterbegriffe(wikitext: str) -> list[str]:
+def extract_unterbegriffe(wikitext: str, base_word: str) -> list[str]:
     section = extract_german_section(wikitext)
     lines = section.splitlines()
-    largest_terms: list[str] = []
+    terms: list[str] = []
+    seen: set[str] = set()
 
     for template_name in TERM_SECTION_TEMPLATES:
-        terms = extract_linked_template_section(lines, template_name)
-        if len(terms) > len(largest_terms):
-            largest_terms = terms
+        for term in extract_linked_template_section(lines, template_name):
+            if not is_prefixed_verb(term, base_word):
+                continue
+            key = normal_key(term)
+            if key not in seen:
+                seen.add(key)
+                terms.append(term)
 
-    return largest_terms
+    return terms
 
 
 def extract_linked_template_section(lines: list[str], template_name: str) -> list[str]:
@@ -176,7 +187,7 @@ def extract_linked_template_section(lines: list[str], template_name: str) -> lis
             break
 
         for term in linked_terms(stripped):
-            key = term.casefold()
+            key = term
             if key not in seen:
                 seen.add(key)
                 terms.append(term)
@@ -331,6 +342,12 @@ def normal_key(word: str) -> str:
     return re.sub(r"\s+", " ", word.strip()).casefold()
 
 
+def is_prefixed_verb(word: str, base_word: str) -> bool:
+    """Match exactly one listed prefix followed immediately by the base word."""
+    return (bool(word) and word[0].islower() and bool(base_word)
+            and word.endswith(base_word) and word[:-len(base_word)] in VERB_PREFIXES)
+
+
 def lookup_word(mapping: dict[str, str] | dict[str, int], word: str):
     for key in lookup_keys(word):
         if key in mapping:
@@ -363,6 +380,28 @@ def estimate_level_from_rank(rank: int | None) -> str:
     return "C2"
 
 
+def frequency_verbs(base_word: str, source: str, dereko_path: Path = DEFAULT_DEREKO_SOURCE) -> list[str]:
+    """Find prefixed matches identified as verbs in the available local metadata."""
+    words = set()
+    try:
+        with dereko_path.open(encoding="utf-8") as handle:
+            for line in handle:
+                columns = line.rstrip("\n").split("\t")
+                if len(columns) == 4:
+                    _, lemma, pos, _ = columns
+                    if pos.startswith(("VV", "VA", "VM")) and is_prefixed_verb(lemma, base_word):
+                        words.add(lemma)
+    except OSError as exc:
+        raise ResourceError(f"failed to read {dereko_path}: {exc}") from exc
+    for row in parse_dict_rows(read_source(source, 30)):
+        word = row.get("word", "")
+        if (is_prefixed_verb(word, base_word)
+                and row.get("german_api_pos", "").casefold() == "verb"
+                and (row.get("dwds_freq") or row.get("dereko_freq"))):
+            words.add(word)
+    return sorted(words, key=normal_key)
+
+
 def output_words(word_base: str, unterbegriffe: Iterable[str]) -> Iterable[str]:
     seen: set[str] = set()
     for word in itertools.chain((word_base,), unterbegriffe):
@@ -383,8 +422,6 @@ def build_rows(
     for word in output_words(word_base, unterbegriffe):
         level = lookup_word(levels, word)
         freq = lookup_word(frequencies, word)
-        if freq is None:
-            continue
         if level is None and infer_missing_level:
             rank = lookup_word(ranks, word)
             level = estimate_level_from_rank(rank)
@@ -422,8 +459,8 @@ def write_rows(rows: Iterable[dict[str, str]], output_path: str | Path) -> None:
 def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Fetch Unterbegriffe or Wortbildungen for a German Wiktionary page and export "
-            "CEFR levels plus word frequencies as comma-separated CSV."
+            "Fetch Unterbegriffe and Wortbildungen for a German Wiktionary page and export "
+            "CEFR levels plus word frequencies as pipe-separated CSV."
         )
     )
     parser.add_argument("word", help='German base word, for example "lassen".')
@@ -463,7 +500,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         "--limit",
         type=int,
         default=0,
-        help="Limit the number of exported term rows, useful for smoke tests.",
+        help="Limit the number of derived word rows, useful for smoke tests.",
     )
     return parser.parse_args(argv)
 
@@ -472,13 +509,17 @@ def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv or sys.argv[1:])
     try:
         wikitext = fetch_wiktionary_wikitext(args.word, args.timeout)
-        unterbegriffe = extract_unterbegriffe(wikitext)
+        unterbegriffe = extract_unterbegriffe(wikitext, args.word)
+        unterbegriffe = list(output_words(args.word, itertools.chain(
+            unterbegriffe, frequency_verbs(args.word, args.frequency_source)
+        )))[1:]
+        output_path = Path(args.output) if args.output else default_output_path(args.word)
+        if not unterbegriffe:
+            output_path.unlink(missing_ok=True)
+            print(f"No derived words found for {args.word}; no family CSV written.")
+            return 0
         if args.limit > 0:
             unterbegriffe = unterbegriffe[: args.limit]
-        if not unterbegriffe:
-            raise ResourceError(
-                f"no Unterbegriffe or Wortbildungen found for {args.word!r}"
-            )
 
         levels = load_level_map(args.level_source, args.timeout)
         frequencies, ranks = load_frequency_map(args.frequency_source, args.timeout)
@@ -492,8 +533,8 @@ def main(argv: list[str] | None = None) -> int:
         )
         rows = list(rows)
         if rows:
-            write_rows(rows, args.output or default_output_path(args.word))
-    except (ResourceError, json.JSONDecodeError) as exc:
+            write_rows(rows, output_path)
+    except (ResourceError, json.JSONDecodeError, OSError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
     return 0

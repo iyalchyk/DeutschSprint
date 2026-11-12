@@ -18,7 +18,7 @@ DEFAULT_ASSETS_DIR = Path("assets")
 DEFAULT_ENV_FILE = Path(".env")
 DEFAULT_GENERATED_DIR = Path("data/3_output")
 DEFAULT_ENRICHED_DIR = Path("data/4_enriched_gemini")
-DEFAULT_MODEL = "gemini-3.5-flash"
+DEFAULT_MODEL = "gemini-3.8-flash"
 API_KEY_ENV = "GOOGLE_GEMINI_API_KEY"
 
 

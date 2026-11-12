@@ -93,10 +93,11 @@ Run [scripts/wiktionary_unterbegriffe.py](/Users/iyalchyk/@projects/DeutschSprin
 The script:
 
 - fetches the German Wiktionary page for a word
-- extracts `Unterbegriffe` or `Wortbildungen`
+- combines `Unterbegriffe` and `Wortbildungen`, keeping lowercase terms formed from a listed verb prefix or particle followed by the base word, and removing duplicates
+- adds verbs matching the same prefix rule and tagged in DeReKo or GermanAPI and present in the frequency data; DWDS itself has no part-of-speech tags
 - looks up CEFR level from `data/2_interim/german_frequency_join.csv`
 - looks up frequency from the same joined CSV
-- writes a pipe-separated CSV for that word
+- writes a pipe-separated CSV only when at least one derived word is found; removes a previous output for that base otherwise
 
 Single-word example:
 
@@ -115,6 +116,29 @@ Useful options:
 - `--no-infer-level` to leave missing levels blank
 - `--limit` for smoke tests
 - `--output` to override the destination path
+
+### 4. Export standalone verbs
+
+After building the joined frequency CSV and the family files, run:
+
+```bash
+python3 scripts/build_single_verbs.py
+```
+
+This writes `data/3_output/_single_verbs.csv` without network requests. It
+collects single-word lowercase verb lemmas from DeReKo's verb tags and verb
+entries from the German API, then removes every base and word already present
+in a family CSV. It also excludes attested prefix-derived verbs and their
+attested bases using a list of common German verb prefixes. This is a heuristic
+and can miss unusual derivations or match unrelated words. It uses the joined
+table and the same DWDS frequency and CEFR level lookup and inference as the family exporter; candidates without a DWDS
+frequency are omitted. The result means “not present in the existing family
+files,” not proof that a verb has no possible derivatives. Re-run after updating
+family files or the joined data. Paths can be overridden using `--help`.
+
+The pipe-separated output has columns `word_base|word|word_level|word_freq`;
+`word_base` and `word` are identical in each row. Use `--dereko`, `--api`,
+`--joined`, `--families`, or `--output` to override the default paths.
 
 ## Run The Full Workflow
 
@@ -152,6 +176,24 @@ After the pipeline completes, you should have:
 
 - raw German API dumps in `data/1_input/GermanAPI/`
 - a joined metadata table at `data/2_interim/german_frequency_join.csv`
-- one CSV per base word in `data/3_output/`
+- one CSV per base word with at least one derived word in `data/3_output/`
 
 You can also open [index.html](/Users/iyalchyk/@projects/DeutschSprint/index.html) in a browser to inspect the generated assets included in this repo.
+
+## Incremental Gemini enrichment
+
+After updating `data/3_output`, enrich new vocabulary with:
+
+```bash
+.venv/bin/python scripts/enrich_csv_gemini.py --workers 4 --batch-size 20
+```
+
+The script preserves complete existing enrichment, reuses words already enriched in other families, and sends only unique missing words to Gemini. German capitalization is significant, so a noun and a lowercase verb remain distinct. Current input rows determine the output order and metadata; words removed from the input are omitted from the corresponding enriched CSV.
+
+Existing enrichment is read from `data/4_enriched_gemini/`, and each successful batch is saved atomically to a dated directory such as `data/4_enriched_gemini_20261112/`. Rerunning on the same date resumes missing words, including after a failed request. Use `--cache-dir` to select another source of existing enrichment and `--output-dir` to choose the output directory. A run with failed batches returns a nonzero exit code. Use `--dry-run` to inspect pending counts without API calls or writes, or pass a base word to process one family. `--overwrite` explicitly regenerates existing enrichment and is unnecessary for incremental updates.
+
+This command does not generate exercises or publish files to `assets/enriched`.
+
+Gemini requests use the standard structured-JSON generation endpoint with low thinking and a three-minute transport timeout. Transient failures are retried; a reported daily request quota stops queued requests until the quota resets or another model is selected. Use `--model <available-model>` to select a different model. Each successful batch remains reusable across subsequent runs.
+
+For larger batches, increase `--request-timeout` (seconds) so long responses can finish. Valid rows from a partially invalid batch are checkpointed; subsequent runs request only its missing or invalid words. Temporary high-demand responses receive a longer retry delay.
