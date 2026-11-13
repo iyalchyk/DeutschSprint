@@ -15,6 +15,11 @@
         "enriched": "assets/enriched/bitten_enriched.csv"
       },
       {
+        "base": "erzählen",
+        "label": "erzählen",
+        "enriched": "assets/enriched/erzählen_enriched.csv"
+      },
+      {
         "base": "fragen",
         "label": "fragen",
         "enriched": "assets/enriched/fragen_enriched.csv"
@@ -195,38 +200,6 @@
         "base": "zeichnen",
         "label": "zeichnen",
         "enriched": "assets/enriched/zeichnen_enriched.csv"
-      }
-    ]
-  },
-  "time": {
-    "category_name_de": "Zeit",
-    "category_name_en": "Time",
-    "category_name_ru": "Время и протекание",
-    "words": [
-      {
-        "base": "beginnen",
-        "label": "beginnen",
-        "enriched": "assets/enriched/beginnen_enriched.csv"
-      },
-      {
-        "base": "dauern",
-        "label": "dauern",
-        "enriched": "assets/enriched/dauern_enriched.csv"
-      },
-      {
-        "base": "enden",
-        "label": "enden",
-        "enriched": "assets/enriched/enden_enriched.csv"
-      },
-      {
-        "base": "starten",
-        "label": "starten",
-        "enriched": "assets/enriched/starten_enriched.csv"
-      },
-      {
-        "base": "warten",
-        "label": "warten",
-        "enriched": "assets/enriched/warten_enriched.csv"
       }
     ]
   },
@@ -713,11 +686,6 @@
         "enriched": "assets/enriched/stellen_enriched.csv"
       },
       {
-        "base": "verweilen",
-        "label": "verweilen",
-        "enriched": "assets/enriched/verweilen_enriched.csv"
-      },
-      {
         "base": "wohnen",
         "label": "wohnen",
         "enriched": "assets/enriched/wohnen_enriched.csv"
@@ -753,6 +721,33 @@
         "base": "wachsen",
         "label": "wachsen",
         "enriched": "assets/enriched/wachsen_enriched.csv"
+      }
+    ]
+  },
+  "time": {
+    "category_name_de": "Zeit",
+    "category_name_en": "Time",
+    "category_name_ru": "Время и протекание",
+    "words": [
+      {
+        "base": "dauern",
+        "label": "dauern",
+        "enriched": "assets/enriched/dauern_enriched.csv"
+      },
+      {
+        "base": "enden",
+        "label": "enden",
+        "enriched": "assets/enriched/enden_enriched.csv"
+      },
+      {
+        "base": "starten",
+        "label": "starten",
+        "enriched": "assets/enriched/starten_enriched.csv"
+      },
+      {
+        "base": "warten",
+        "label": "warten",
+        "enriched": "assets/enriched/warten_enriched.csv"
       }
     ]
   },
@@ -1202,11 +1197,6 @@
     "category_name_ru": "Состояние и изменение",
     "words": [
       {
-        "base": "gelingen",
-        "label": "gelingen",
-        "enriched": "assets/enriched/gelingen_enriched.csv"
-      },
-      {
         "base": "gelten",
         "label": "gelten",
         "enriched": "assets/enriched/gelten_enriched.csv"
@@ -1240,11 +1230,6 @@
         "base": "stärken",
         "label": "stärken",
         "enriched": "assets/enriched/stärken_enriched.csv"
-      },
-      {
-        "base": "verlieren",
-        "label": "verlieren",
-        "enriched": "assets/enriched/verlieren_enriched.csv"
       },
       {
         "base": "wechseln",
